@@ -29,6 +29,8 @@ for i in range(abs(input_2)):
         Track_1.append("-")
     else:
         Track_1.append()
+Track_1.append(1)
+
 
 # Menambahkan blank di awal dan akhir di kedua track
 for i in range(abs(input_1) * abs(input_2) + 1):
@@ -41,12 +43,14 @@ for i in range(abs(input_1) * abs(input_2)):
 for i in range(abs(input_1) + abs(input_2) + 2):
     Track_2.append("B")
 Track_2.append("B")
+Track_2.append("B")
 
 for i in range(abs(input_1) * abs(input_2)):
     Track_3.append("B")
     Track_3.append("B")
 for i in range(abs(input_1) + abs(input_2) + 2):
     Track_3.append("B")
+Track_3.append("B")
 Track_3.append("B")
 
 j = abs(input_1) * abs(input_2) + 1
@@ -55,16 +59,19 @@ l = abs(input_1) * abs(input_2) + 1
 # Initial State q0
 q = 0
 
+
 while q not in [4]:
     # State q0
     if q == 0:       
         if Track_1[j] == "+":
             Track_2[k] = Track_1[j]
+            Track_1[j] = "B"
             j += 1
             k += 1
             q = 1
         elif Track_1[j] == "-":
             Track_2[k] = Track_1[j]
+            Track_1[j] = "B"
             j += 1
             k += 1
             q = 1
