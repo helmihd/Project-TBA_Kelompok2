@@ -20,7 +20,7 @@ for i in range(abs(input_1)):
 # Memberi pembatas
 Track_1.append(1)
 
-# Memasukkan input 2 ke Track 2
+# Memasukkan input 2 ke Track 1
 for i in range(abs(input_2)):
     if input_2 > 0:
         Track_1.append("+")
