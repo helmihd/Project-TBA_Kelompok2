@@ -58,23 +58,16 @@ while q not in [4]:
             q = 4
     # State q1
     elif q == 1:
-        if Track_1[j] == "+":
-            Track_2.insert(k, Track_1[j])
-            Track_3.insert(l, Track_2[k])
+        if Track_1[j] == "+" and Track_2[k] == "B" and Track_3[l] == "B":
             j += 1
             q = 1
-        elif Track_1[j] == "-":
-            Track_2.insert(k, Track_1[j])
-            Track_3.insert(l, Track_2[k])
+        elif Track_1[j] == "-" and Track_2[k] == "B" and Track_3[l] == "B":
             j += 1
             q = 1
-        elif Track_1[j] == 1:
+        elif Track_1[j] == 1 and Track_2[k] == "B" and Track_3[l] == "B":
             j += 1
-            if k == 0:
-                k == 0
-            elif k > 0:
-                k -= 1
-            q = 1
+            k -= 1
+            q = 2
     # State q2
     elif q == 2:
         if Track_1[j] == "+" and Track_2[k] == "+" and Track_3[l] == "B":
