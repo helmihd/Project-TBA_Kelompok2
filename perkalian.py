@@ -30,11 +30,28 @@ for i in range(abs(input_2)):
     else:
         Track_1.append()
 
-Track_1.append("B")
+# Menambahkan blank di awal dan akhir di kedua track
+for i in range(abs(input_1) * abs(input_2) + 1):
+    Track_1.insert(0, "B")
+    Track_1.append("B")
+    
+for i in range(abs(input_1) * abs(input_2)):
+    Track_2.append("B")
+    Track_2.append("B")
+for i in range(abs(input_1) + abs(input_2) + 2):
+    Track_2.append("B")
+Track_2.append("B")
 
-j = 0
-k = 0
-l = 0
+for i in range(abs(input_1) * abs(input_2)):
+    Track_3.append("B")
+    Track_3.append("B")
+for i in range(abs(input_1) + abs(input_2) + 2):
+    Track_3.append("B")
+Track_3.append("B")
+
+j = abs(input_1) * abs(input_2) + 1
+k = abs(input_1) * abs(input_2) + 1
+l = abs(input_1) * abs(input_2) + 1
 # Initial State q0
 q = 0
 
@@ -42,14 +59,12 @@ while q not in [4]:
     # State q0
     if q == 0:       
         if Track_1[j] == "+":
-            Track_2.insert(k, Track_1[j])
-            Track_3.insert(l, Track_2[k])
+            Track_2[k] = Track_1[j]
             j += 1
             k += 1
             q = 1
         elif Track_1[j] == "-":
-            Track_2.insert(k, Track_1[j])
-            Track_3.insert(l, Track_2[k])
+            Track_2[k] = Track_1[j]
             j += 1
             k += 1
             q = 1
@@ -124,3 +139,13 @@ for i in range (len(Track_2)):
 print("\nTrack 3: ", end="")
 for i in range (len(Track_3)):
     print (Track_3[i], end="")
+
+a = Track_3.count("+")
+b = Track_3.count("-")
+
+if a > b:
+    print("\nHasil: ", a, sep="")
+elif a == b:
+    print("\nHasil: ", a, sep="")
+else:
+    print("\nHasil: -", b, sep="")
