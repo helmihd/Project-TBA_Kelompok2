@@ -41,7 +41,7 @@ q = 0
 
 
 while q not in [8]:
-    
+    """
     print("State: q", q)
     print("Track 1: ", end="")
     for i in range (len(Track_1)):
@@ -58,7 +58,7 @@ while q not in [8]:
         print (Track_3[i], end="")
     print(": ", Track_3[l], end="")
     print("\n")
-    
+    """
     # State q0
     if q == 0:
         if Track_1[j] == 0 and Track_2[k] == "B" and Track_3[l] == "B":
