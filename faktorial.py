@@ -6,35 +6,39 @@ Track_3 = []
 # Meminta user memasukkan input bilangan
 input_1 = int(input("Masukkan bilangan yang ingin difaktorial: "))
 
-# Memberi pembatas
-Track_1.append(1)
-
 # Memasukkan input ke Track 1
 for i in range(abs(input_1)):
     Track_1.append(0)
     
+# Memberi pembatas
+Track_1.append(1)
+    
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * factorial(n - 1)
+    
 # Menambahkan blank di awal dan akhir di semua track
-for i in range(abs(input_1) + 1):
+for i in range(factorial(input_1) + 1):
     Track_1.insert(0, "B")
     Track_1.append("B")
     
-for i in range(abs(input_1)):
+for i in range(factorial(input_1) + 1):
     Track_2.append("B")
     Track_2.append("B")
-for i in range(abs(input_1) + 2):
-    Track_2.append("B")
+for i in range(abs(input_1) + 1):
     Track_2.append("B")
 
-for i in range(abs(input_1)):
+for i in range(factorial(input_1) + 1):
     Track_3.append("B")
     Track_3.append("B")
-for i in range(abs(input_1) + 2):
-    Track_3.append("B")
+for i in range(abs(input_1) + 1):
     Track_3.append("B")
 
-j = abs(input_1) + 1
-k = abs(input_1) + 1
-l = abs(input_1) + 1
+j = factorial(input_1) + 1
+k = factorial(input_1) + 1
+l = factorial(input_1) + 1
 # Initial State q0
 q = 0
 
@@ -68,6 +72,8 @@ while q not in [5, 6]:
             l += 1
             q = 2
         elif Track_1[j] == 0 and Track_2[k] == 0 and Track_3[l] == 0:
+            j -= 1
+            l += 1
             q = 2
         elif Track_1[j] == "B" and Track_2[k] == 0 and Track_3[l] == "B":
             j += 1
@@ -80,8 +86,7 @@ while q not in [5, 6]:
             k += 1
             l -= 1
             q = 4
-        elif Track_1[j] == "B" and Track_2[k] == "B" and Track_3[l] == "B":
-            Track_3[l] = 0
+        elif Track_1[j] == "B" and Track_2[k] == "B" and Track_3[l] == 0:
             q = 5
         elif Track_1[j] == "B" and Track_2[k] == "B" and Track_3[l] == "B":
             Track_3[l] = 0
@@ -114,8 +119,8 @@ while q not in [5, 6]:
         elif Track_1[j] == 1 and Track_2[k] == "B" and Track_3[l] == "B":
             j -= 1
             k -= 1
+            l += 1
             q = 2
-
 
 print("Track 1: ", end="")
 for i in range (len(Track_1)):
@@ -129,3 +134,4 @@ print("\nTrack 3: ", end="")
 for i in range (len(Track_3)):
     print (Track_3[i], end="")
 
+print("\nHasil: ", Track_3.count(0))
