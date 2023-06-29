@@ -29,7 +29,8 @@ for i in range(abs(input_2)):
     else:
         Track_1.append()
 
-for i in range(abs(input_1) + abs(input_2)):
+# Menambahkan blank di awal dan akhir di kedua track
+for i in range(abs(input_1) + abs(input_2) + 1):
     Track_1.insert(0, "B")
     Track_1.append("B")
 
@@ -38,9 +39,12 @@ for i in range(abs(input_1) + abs(input_2)):
     Track_2.append("B")
     Track_2.append("B")
 Track_2.append("B")
+Track_2.append("B")
+Track_2.append("B")
 
-j = abs(input_1) + abs(input_2)
-k = abs(input_1) + abs(input_2)
+
+j = abs(input_1) + abs(input_2) + 1
+k = abs(input_1) + abs(input_2) + 1
 # Initial State q0
 q = 0
 
@@ -143,6 +147,8 @@ a = Track_2.count("+")
 b = Track_2.count("-")
 
 if a > b:
+    print("\nHasil: ", a, sep="")
+elif a == b:
     print("\nHasil: ", a, sep="")
 else:
     print("\nHasil: -", b, sep="")
