@@ -32,7 +32,7 @@ for i in range(abs(input_2)):
 Track_1.append(1)
 
 
-# Menambahkan blank di awal dan akhir di kedua track
+# Menambahkan blank di awal dan akhir di semua track
 for i in range(abs(input_1) * abs(input_2) + 1):
     Track_1.insert(0, "B")
     Track_1.append("B")
