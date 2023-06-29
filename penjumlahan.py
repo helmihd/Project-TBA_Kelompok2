@@ -20,7 +20,7 @@ for i in range(abs(input_1)):
 # Memberi pembatas
 Track_1.append(1)
 
-# Memasukkan input 2 ke Track 2
+# Memasukkan input 2 ke Track 1
 for i in range(abs(input_2)):
     if input_2 > 0:
         Track_1.append("+")
@@ -29,10 +29,18 @@ for i in range(abs(input_2)):
     else:
         Track_1.append()
 
-Track_1.append("B")
+for i in range(abs(input_1) + abs(input_2)):
+    Track_1.insert(0, "B")
+    Track_1.append("B")
 
-j = 0
-k = 0
+for i in range(abs(input_1) + abs(input_2)):
+    Track_2.append("B")
+    Track_2.append("B")
+    Track_2.append("B")
+Track_2.append("B")
+
+j = abs(input_1) + abs(input_2)
+k = abs(input_1) + abs(input_2)
 # Initial State q0
 q = 0
 
@@ -40,21 +48,18 @@ while q not in [3, 5, 7, 9, 10]:
     # State q0
     if q == 0:       
         if Track_1[j] == "+":
-            Track_2.insert(k, Track_1[j])
+            Track_2[k] = Track_1[j]
             j += 1
             k += 1
             q = 0
         elif Track_1[j] == "-":
-            Track_2.insert(k, Track_1[j])
+            Track_2[k] = Track_1[j]
             j += 1
             k += 1
             q = 0
         elif Track_1[j] == 1:
             j += 1
-            if k == 0:
-                k == 0
-            elif k > 0:
-                k -= 1
+            k -= 1
             q = 1
     # State q1
     elif q == 1:
@@ -66,8 +71,18 @@ while q not in [3, 5, 7, 9, 10]:
             j += 1
             k -= 1
             q = 4
+        elif Track_1[j] == "-" and Track_2[k] == "B":
+            Track_2[k] = Track_1[j]
+            j += 1
+            k -= 1
+            q = 4
         elif Track_1[j] == "+" and Track_2[k] == "-":
             Track_2[k] = "B"
+            j += 1
+            k -= 1
+            q = 6
+        elif Track_1[j] == "+" and Track_2[k] == "B":
+            Track_2[k] = "+"
             j += 1
             k -= 1
             q = 6
@@ -78,15 +93,20 @@ while q not in [3, 5, 7, 9, 10]:
             q = 10
     # State q2
     elif q == 2:
-        if Track_1[j] == "+":
-            Track_2.insert(k, Track_1[j])
+        if Track_1[j] == "+" and Track_2[k] == "B":
+            Track_2[k] = Track_1[j]
             j += 1
+            k += 1
         else:
             q = 3
     # State q4
     elif q == 4:
         if Track_1[j] == "-" and Track_2[k] == "+":
             Track_2[k] = "B"
+            j += 1
+            k -= 1
+        elif Track_1[j] == "-" and Track_2[k] == "B":
+            Track_2[k] = Track_1[j]
             j += 1
             k -= 1
         else:
@@ -97,13 +117,18 @@ while q not in [3, 5, 7, 9, 10]:
             Track_2[k] = "B"
             j += 1
             k -= 1
+        elif Track_1[j] == "+" and Track_2[k] == "B":
+            Track_2[k] = Track_1[j]
+            j += 1
+            k -= 1
         else:
             q = 7
     # State q8
     elif q == 8:
-        if Track_1[j] == "-":
-            Track_2.insert(k, Track_1[j])
+        if Track_1[j] == "-" and Track_2[k] == "B":
+            Track_2[k] = Track_1[j]
             j += 1
+            k += 1
         else: q = 9
 
 print("Track 1: ", end="")
@@ -113,3 +138,11 @@ for i in range (len(Track_1)):
 print("\nTrack 2: ", end="")
 for i in range (len(Track_2)):
     print (Track_2[i], end="")
+
+a = Track_2.count("+")
+b = Track_2.count("-")
+
+if a > b:
+    print("\nHasil: ", a, sep="")
+else:
+    print("\nHasil: -", b, sep="")
