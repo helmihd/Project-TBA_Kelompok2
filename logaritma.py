@@ -95,11 +95,13 @@ while q not in [9]:
         if Track_1[j] == 1 and Track_2[k] == "B" and Track_3[l] == "B":
             j -= 1
             q = 3
+        if Track_1[j] == "X" and Track_2[k] == "B" and Track_3[l] == "B":
+            j -= 1
+            q = 3
         elif Track_1[j] == 0 and Track_2[k] == "B" and Track_3[l] == "B":
             j -= 1
             q = 3
         elif Track_1[j] == "B" and Track_2[k] == "B" and Track_3[l] == "B":
-            Track_1[j] = 0
             j += 1
             q = 0
     # State q4

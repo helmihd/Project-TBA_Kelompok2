@@ -14,28 +14,28 @@ for i in range(abs(input_1)):
     Track_1.append(0)
 
 # Menambahkan blank di awal dan akhir Track
-for i in range(pow(input_1, 2) + 1):
+for i in range(input_1):
     Track_1.insert(0, "B")
-    Track_1.append("B")
+Track_1.insert(0, "B")
 Track_1.append("B")
 
-for i in range(pow(input_1, 2) + 1):
+for i in range(input_1):
     Track_2.append("B")
     Track_2.append("B")
-    Track_2.append("B")
-
+Track_2.append("B")
+Track_2.append("B")
 Track_2.append("B")
 
-for i in range(pow(input_1, 2) + 1):
+for i in range(input_1):
     Track_3.append("B")
     Track_3.append("B")
-    Track_2.append("B")
-
+Track_3.append("B")
+Track_3.append("B")
 Track_3.append("B")
 
-j = pow(input_1, 2) + 1
-k = pow(input_1, 2) + 1
-l = pow(input_1, 2) + 1
+j = input_1 + 1
+k = input_1 + 1
+l = input_1 + 1
 # Initial State q0
 q = 0
 
@@ -59,6 +59,7 @@ while q not in [8]:
     print(": ", Track_3[l], end="")
     print("\n")
     """
+
     # State q0
     if q == 0:
         if Track_1[j] == 0 and Track_2[k] == "B" and Track_3[l] == "B":
@@ -118,7 +119,6 @@ while q not in [8]:
         if Track_1[j] == 0 and Track_2[k] == "B" and Track_3[l] == 0:
             Track_3[l] = "B"
             j += 1
-            k += 1
             l += 1
         if Track_1[j] == 0 and Track_2[k] == "B" and Track_3[l] == "B":
             j -= 1
