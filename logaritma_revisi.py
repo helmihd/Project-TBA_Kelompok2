@@ -81,6 +81,8 @@ while q not in [10]:
             Track_1[j] = "B"
             j -= 1
             q = 3
+        elif Track_1[j] == "B" and Track_2[k] == "B" and Track_3[l] == "B":
+            q = 9
     # State q3
     elif q == 3:
         if Track_1[j] == 0 and Track_2[k] == "B" and Track_3[l] == "B":
@@ -117,7 +119,6 @@ while q not in [10]:
     # State q6
     elif q == 6:
         if Track_1[j] == "B" and Track_2[k] == "B" and Track_3[l] == "B":
-            Track_3[l] == "Y"
             l += 1
             q = 9
         elif Track_1[j] == "B" and Track_2[k] == "B" and Track_3[l] == 0:
@@ -138,7 +139,7 @@ while q not in [10]:
             Track_3[l] = "B"
             l -= 1
             q = 8
-        elif Track_1[j] == "B" and Track_2[k] == "B" and Track_3[l] == "Y":
+        elif Track_1[j] == "B" and Track_2[k] == "B" and Track_3[l] == "B":
             l += 1
             q = 9
     # State q9
