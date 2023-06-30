@@ -10,7 +10,7 @@ input_1 = int(input("Masukkan bilangan yang ingin diakarkan: "))
 Track_1.append(1)
 
 # Memasukkan input ke Track 1
-for i in range(pow(input_1, 2)):
+for i in range(abs(input_1)):
     Track_1.append(0)
 
 # Menambahkan blank di awal dan akhir Track
