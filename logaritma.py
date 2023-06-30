@@ -61,6 +61,7 @@ while q not in [9]:
     # State q0
     if q == 0:       
         if Track_1[j] == 0:
+            Track_1[j] = "B"
             j += 1
             q = 1
         elif Track_1[j] == 1 and Track_2[k] == "B" and Track_3[l] == "B":
@@ -88,8 +89,6 @@ while q not in [9]:
         elif Track_1[j] == "B" and Track_2[k] == "B" and Track_3[l] == "B":
             j -= 1
             q = 5
-        elif Track_1[j] == "B" and Track_2[k] == "B" and Track_3[l] == "B":
-            q = 9
     # State q3
     elif q == 3:
         if Track_1[j] == 1 and Track_2[k] == "B" and Track_3[l] == "B":
@@ -102,6 +101,7 @@ while q not in [9]:
             j -= 1
             q = 3
         elif Track_1[j] == "B" and Track_2[k] == "B" and Track_3[l] == "B":
+            Track_1[j] = 0
             j += 1
             q = 0
     # State q4
@@ -118,16 +118,15 @@ while q not in [9]:
             j -= 1
             q = 5
         elif Track_1[j] == 1 and Track_2[k] == "B" and Track_3[l] == "B":
-            Track_1[j] == "B"
             j -= 1
             q = 5
         elif Track_1[j] == "X" and Track_2[k] == "B" and Track_3[l] == "B":
-            Track_1[j] == "B"
+            Track_1[j] = "B"
             j -= 1
             q = 5
         elif Track_1[j] == "B" and Track_2[k] == "B" and Track_3[l] == "B":
-            Track_1[j] == 0
-            Track_3[l] == 0
+            Track_1[j] = 0
+            Track_3[l] = 0
             j += 1
             l += 1
             q = 6
@@ -143,8 +142,8 @@ while q not in [9]:
     # State q7
     elif q == 7:
         if Track_1[j] == "B" and Track_2[k] == 0 and Track_3[l] == "B":
-            Track_1[j] == 0
-            Track_2[k] == "B"
+            Track_1[j] = 0
+            Track_2[k] = "B"
             j += 1
             k -= 1
             q = 7
@@ -157,7 +156,6 @@ while q not in [9]:
             j -= 1
             q = 8
         elif Track_1[j] == 1 and Track_2[k] == "B" and Track_3[l] == "B":
-            Track_1[j] == 0
             j -= 1
             q = 8
         elif Track_1[j] == "B" and Track_2[k] == "B" and Track_3[l] == "B":
