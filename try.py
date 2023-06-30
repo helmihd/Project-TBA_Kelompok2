@@ -12,6 +12,9 @@ def open_addition_window():
     addition_window.tk.call("source", "azure.tcl")
     addition_window.tk.call("set_theme", "dark")
     addition_window.title("Penjumlahan")
+    addition_window.geometry('700x400')  # Ukuran tetap (lebar x tinggi)
+    addition_window.resizable(False, False)  # Mengunci ukuran jendela
+
     #addition_window.geometry(main_window.geometry())
     
     main_window.withdraw()  # Menyembunyikan jendela utama
@@ -60,7 +63,9 @@ def open_subtraction_window():
     subtraction_window.tk.call("source", "azure.tcl")
     subtraction_window.tk.call("set_theme", "dark")
     subtraction_window.title("Pengurangan")
-    
+    subtraction_window.geometry('700x400')  # Ukuran tetap (lebar x tinggi)
+    subtraction_window.resizable(False, False)  # Mengunci ukuran jendela
+
     main_window.withdraw() 
 
     def perform_subtraction():
@@ -107,7 +112,9 @@ def open_multiplication_window():
     multiplication_window.tk.call("source", "azure.tcl")
     multiplication_window.tk.call("set_theme", "dark")
     multiplication_window.title("Pengurangan")
-    
+    multiplication_window.geometry('700x400')  # Ukuran tetap (lebar x tinggi)
+    multiplication_window.resizable(False, False)  # Mengunci ukuran jendela
+
     main_window.withdraw()
 
     def perform_multiplication():
@@ -158,6 +165,9 @@ def exit_program():
 
 main_window.tk.call("source", "azure.tcl")
 main_window.tk.call("set_theme", "dark")
+main_window.geometry('700x400')  # Ukuran tetap (lebar x tinggi)
+main_window.resizable(False, False)  # Mengunci ukuran jendela
+
 #main_window.geometry("400x300")  # Mengatur lebar=400 dan tinggi=300 piksel
 # Mengukur tinggi taskbar
 """
@@ -174,6 +184,7 @@ main_window.geometry(f"{window_width}x{window_height}")
 main_window.geometry(f"+0+0")
 """
 #main_window.resizable(False, False)
+
 
 button_addition = ttk.Button(main_window, text="Penjumlahan", command=open_addition_window, width=20)
 button_addition.grid(row=0, column=0, ipadx=80, ipady=5, padx=5, pady=5)
