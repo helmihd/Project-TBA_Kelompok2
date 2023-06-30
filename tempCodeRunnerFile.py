@@ -1,16 +1,14 @@
-print("State: q", q)
-    print("Track 1: ", end="")
-    for i in range (len(Track_1)):
-        print (Track_1[i], end="")
-    print(": ", Track_1[j], end="")
-    
-    print("\nTrack 2: ", end="")
-    for i in range (len(Track_2)):
-        print (Track_2[i], end="")
-    print(": ", Track_2[k], end="")
-    
-    print("\nTrack 3: ", end="")
-    for i in range (len(Track_3)):
-        print (Track_3[i], end="")
-    print(": ", Track_3[l], end="")
-    print("\n")
+def set_window_fullscreen(window):
+    screen_width = window.winfo_screenwidth()
+    screen_height = window.winfo_screenheight()
+    taskbar_height = get_taskbar_height()
+
+    window.geometry(f"{screen_width}x{screen_height - taskbar_height}")
+
+def get_taskbar_height():
+    taskbar_height = 0
+
+    if ctypes.windll.user32.GetSystemMetrics(0x02) != 0:  # 0x02 mengindikasikan taskbar di bawah
+        taskbar_height = ctypes.windll.user32.GetSystemMetrics(0x02) 
+
+    return taskbar_height
