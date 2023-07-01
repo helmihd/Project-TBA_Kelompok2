@@ -1,10 +1,10 @@
 def root (num1):
-    # Mendeklarasikan 2 track kosong
+    # Mendeklarasikan 3 track kosong
     Track_1 = []
     Track_2 = []
     Track_3 = []
 
-    # Meminta user memasukkan input
+    # Memasukkan input bilangan akar
     input_1 = num1
 
     # Memberi pembatas
@@ -34,12 +34,12 @@ def root (num1):
     Track_3.append("B")
     Track_3.append("B")
 
+    # Menentukan posisi awal pada masing-masing Track
     j = input_1 + 1
     k = input_1 + 1
     l = input_1 + 1
     # Initial State q0
     q = 0
-
 
     while q not in [8]:
         """

@@ -4,8 +4,9 @@ def factorial (num1):
     Track_2 = []
     Track_3 = []
 
-    # Meminta user memasukkan input bilangan
+    # Memasukkan input
     input_1 = num1
+    
     # Memasukkan input ke Track 1
     for i in range(abs(input_1)):
         Track_1.append(0)
@@ -19,7 +20,7 @@ def factorial (num1):
         else:
             return n * factorial(n - 1)
         
-    # Menambahkan blank di awal dan akhir di semua track
+    # Menambahkan blank di awal dan akhir di semua track sebanyak factorial dari input
     for i in range(factorial(input_1) + 1):
         Track_1.insert(0, "B")
         Track_1.append("B")
@@ -36,6 +37,7 @@ def factorial (num1):
     for i in range(abs(input_1) + 1):
         Track_3.append("B")
 
+    # Menentukan posisi awal pada masing-masing Track
     j = factorial(input_1) + 1
     k = factorial(input_1) + 1
     l = factorial(input_1) + 1

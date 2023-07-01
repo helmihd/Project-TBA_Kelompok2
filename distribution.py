@@ -1,16 +1,16 @@
 def distribution (num1, num2):
-    # Mendeklarasikan 2 track kosong
+    # Mendeklarasikan 3 track kosong
     Track_1 = []
     Track_2 = []
     Track_3 = []
 
-    # Memasukkan input bilangan pertama
+    # Memasukkan input bilangan pembilang
     input_1 = num1
 
-    # Memasukkan input bilangan kedua
+    # Memasukkan input bilangan penyebut
     input_2 = num2
 
-    # Memasukkan input 2 ke Track 1
+    # Memasukkan input bilangan penyebut ke Track 1
     for i in range(abs(input_2)):
         if input_2 > 0:
             Track_1.append("+")
@@ -22,7 +22,7 @@ def distribution (num1, num2):
     # Memberi pembatas
     Track_1.append(1)
 
-    # Memasukkan input 1 ke Track 1
+    # Memasukkan input bilangan pembilang Track 1
     for i in range(abs(input_1)):
         if input_1 > 0:
             Track_1.append("+")
@@ -49,7 +49,8 @@ def distribution (num1, num2):
     for i in range(abs(input_1) + abs(input_2) + 2):
         Track_3.append("B")
     Track_3.append("B")
-
+    
+    # Menentukan posisi awal pada masing-masing Track
     j = abs(input_1) * abs(input_2) + 1
     k = abs(input_1) * abs(input_2) + 1
     l = abs(input_1) * abs(input_2) + 1

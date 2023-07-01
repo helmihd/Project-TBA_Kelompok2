@@ -1,36 +1,26 @@
 import tkinter as tk
-import ctypes
-from tkinter import ttk
-from ttkthemes import ThemedTk
-from addition import addition # Mengimport fungsi penjumlahan
-from subtraction import subtraction # Mengimport fungsi pengurangan
-from multiplication import multiplication # Mengimport fungsi perkalian
-from distribution import distribution # Mengimport fungsi pembagian
-from factorial import factorial # Mengimport fungsi faktorial
-from power import power # Mengimport fungsi pangkat
-from root import root # Mengimport fungsi akar
+from tkinter import Tk, ttk, Button
 
-"""
-def set_window_fullscreen(window):
-    screen_width = window.winfo_screenwidth()
-    screen_height = window.winfo_screenheight()
-    taskbar_height = get_taskbar_height()
+from addition import addition
+from subtraction import subtraction
+from multiplication import multiplication
+from distribution import distribution
+from factorial import factorial
+from power import power
+from root import root
+from logarithm import logarithm
 
-    window.geometry(f"{screen_width}x{screen_height - taskbar_height}")
+main_window = Tk()
+main_window.title("Program Turing Machine")
 
-def get_taskbar_height():
-    taskbar_height = 0
-
-    if ctypes.windll.user32.GetSystemMetrics(0x02) != 0:  # 0x02 mengindikasikan taskbar di bawah
-        taskbar_height = ctypes.windll.user32.GetSystemMetrics(0x02) 
-
-    return taskbar_height
-"""
-def open_addition_window():
-    main_window.withdraw()  # Menyembunyikan jendela utama
-
-    addition_window = tk.Toplevel()
+def open_addition_window():    
+    addition_window = tk.Tk()
+    addition_window.tk.call("source", "azure.tcl")
+    addition_window.tk.call("set_theme", "dark")
     addition_window.title("Penjumlahan")
+    addition_window.geometry(main_window.geometry())
+    
+    main_window.withdraw()
 
     def perform_addition():
         num1 = int(entry_num1.get())
@@ -39,43 +29,46 @@ def open_addition_window():
         label_track_1.config(text="Track 1: " + ''.join(str(x) for x in Track_1))
         label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
         label_result.config(text="Hasil: " + str(result))
-        
+    
     def back_to_main_window():
-        addition_window.destroy()  # Menutup jendela penjumlahan
-        main_window.deiconify()  # Membuka kembali jendela utama
-
-    label_num1 = tk.Label(addition_window, text="Bilangan 1:")
+        addition_window.destroy()
+        main_window.deiconify() 
+    
+    label_num1 = ttk.Label(addition_window, text="Bilangan 1:")
     label_num1.pack()
 
-    entry_num1 = tk.Entry(addition_window)
+    entry_num1 = ttk.Entry(addition_window)
     entry_num1.pack()
 
-    label_num2 = tk.Label(addition_window, text="Bilangan 2:")
+    label_num2 = ttk.Label(addition_window, text="Bilangan 2:")
     label_num2.pack()
 
-    entry_num2 = tk.Entry(addition_window)
+    entry_num2 = ttk.Entry(addition_window)
     entry_num2.pack()
 
-    button_add = tk.Button(addition_window, text="Hitung", command=perform_addition)
+    button_add = ttk.Button(addition_window, text="Hitung", command=perform_addition)
     button_add.pack()
     
-    label_track_1 = tk.Label(addition_window, text="Track 1 :")
+    label_track_1 = ttk.Label(addition_window, text="Track 1 :")
     label_track_1.pack()
     
-    label_track_2 = tk.Label(addition_window, text="Track 2: ")
+    label_track_2 = ttk.Label(addition_window, text="Track 2: ")
     label_track_2.pack()
 
-    label_result = tk.Label(addition_window, text="Hasil: ")
+    label_result = ttk.Label(addition_window, text="Hasil: ")
     label_result.pack()
     
-    button_back = tk.Button(addition_window, text="Kembali", command=back_to_main_window)
+    button_back = ttk.Button(addition_window, text="Kembali", command=back_to_main_window)
     button_back.pack()
 
 def open_subtraction_window():
-    main_window.withdraw()  # Menyembunyikan jendela utama
-
-    subtraction_window = tk.Toplevel()
+    subtraction_window = tk.Tk()
+    subtraction_window.tk.call("source", "azure.tcl")
+    subtraction_window.tk.call("set_theme", "dark")
     subtraction_window.title("Pengurangan")
+    subtraction_window.geometry(main_window.geometry())
+
+    main_window.withdraw() 
 
     def perform_subtraction():
         num1 = int(entry_num1.get())
@@ -86,41 +79,44 @@ def open_subtraction_window():
         label_result.config(text="Hasil: " + str(result))
         
     def back_to_main_window():
-        subtraction_window.destroy()  # Menutup jendela penjumlahan
-        main_window.deiconify()  # Membuka kembali jendela utama
+        subtraction_window.destroy()
+        main_window.deiconify() 
 
-    label_num1 = tk.Label(subtraction_window, text="Bilangan 1:")
+    label_num1 = ttk.Label(subtraction_window, text="Bilangan 1:")
     label_num1.pack()
 
-    entry_num1 = tk.Entry(subtraction_window)
+    entry_num1 = ttk.Entry(subtraction_window)
     entry_num1.pack()
 
-    label_num2 = tk.Label(subtraction_window, text="Bilangan 2:")
+    label_num2 = ttk.Label(subtraction_window, text="Bilangan 2:")
     label_num2.pack()
 
-    entry_num2 = tk.Entry(subtraction_window)
+    entry_num2 = ttk.Entry(subtraction_window)
     entry_num2.pack()
 
-    button_add = tk.Button(subtraction_window, text="Hitung", command=perform_subtraction)
+    button_add = ttk.Button(subtraction_window, text="Hitung", command=perform_subtraction)
     button_add.pack()
     
-    label_track_1 = tk.Label(subtraction_window, text="Track 1 :")
+    label_track_1 = ttk.Label(subtraction_window, text="Track 1 :")
     label_track_1.pack()
     
-    label_track_2 = tk.Label(subtraction_window, text="Track 2: ")
+    label_track_2 = ttk.Label(subtraction_window, text="Track 2: ")
     label_track_2.pack()
 
-    label_result = tk.Label(subtraction_window, text="Hasil: ")
+    label_result = ttk.Label(subtraction_window, text="Hasil: ")
     label_result.pack()
     
-    button_back = tk.Button(subtraction_window, text="Kembali", command=back_to_main_window)
+    button_back = ttk.Button(subtraction_window, text="Kembali", command=back_to_main_window)
     button_back.pack()
-   
-def open_multiplication_window():
-    main_window.withdraw()  # Menyembunyikan jendela utama
 
-    multiplication_window = tk.Toplevel()
+def open_multiplication_window():
+    multiplication_window = tk.Tk()
+    multiplication_window.tk.call("source", "azure.tcl")
+    multiplication_window.tk.call("set_theme", "dark")
     multiplication_window.title("Perkalian")
+    multiplication_window.geometry(main_window.geometry())
+    
+    main_window.withdraw()
 
     def perform_multiplication():
         num1 = int(entry_num1.get())
@@ -132,44 +128,47 @@ def open_multiplication_window():
         label_result.config(text="Hasil: " + str(result))
         
     def back_to_main_window():
-        multiplication_window.destroy()  # Menutup jendela penjumlahan
-        main_window.deiconify()  # Membuka kembali jendela utama
+        multiplication_window.destroy()
+        main_window.deiconify()
 
-    label_num1 = tk.Label(multiplication_window, text="Bilangan 1:")
+    label_num1 = ttk.Label(multiplication_window, text="Masukkan bilangan pembilang:")
     label_num1.pack()
 
-    entry_num1 = tk.Entry(multiplication_window)
+    entry_num1 = ttk.Entry(multiplication_window)
     entry_num1.pack()
 
-    label_num2 = tk.Label(multiplication_window, text="Bilangan 2:")
+    label_num2 = ttk.Label(multiplication_window, text="Masukkan bilangan penyebut:")
     label_num2.pack()
 
-    entry_num2 = tk.Entry(multiplication_window)
+    entry_num2 = ttk.Entry(multiplication_window)
     entry_num2.pack()
 
-    button_add = tk.Button(multiplication_window, text="Hitung", command=perform_multiplication)
+    button_add = ttk.Button(multiplication_window, text="Hitung", command=perform_multiplication)
     button_add.pack()
     
-    label_track_1 = tk.Label(multiplication_window, text="Track 1 :")
+    label_track_1 = ttk.Label(multiplication_window, text="Track 1 :")
     label_track_1.pack()
     
-    label_track_2 = tk.Label(multiplication_window, text="Track 2: ")
+    label_track_2 = ttk.Label(multiplication_window, text="Track 2: ")
     label_track_2.pack()
     
-    label_track_3 = tk.Label(multiplication_window, text="Track 3: ")
+    label_track_3 = ttk.Label(multiplication_window, text="Track 3: ")
     label_track_3.pack()
 
-    label_result = tk.Label(multiplication_window, text="Hasil: ")
+    label_result = ttk.Label(multiplication_window, text="Hasil: ")
     label_result.pack()
     
-    button_back = tk.Button(multiplication_window, text="Kembali", command=back_to_main_window)
+    button_back = ttk.Button(multiplication_window, text="Kembali", command=back_to_main_window)
     button_back.pack()
-  
-def open_distribution_window():
-    main_window.withdraw()  # Menyembunyikan jendela utama
 
-    distribution_window = tk.Toplevel()
+def open_distribution_window():
+    distribution_window = tk.Tk()
+    distribution_window.tk.call("source", "azure.tcl")
+    distribution_window.tk.call("set_theme", "dark")
     distribution_window.title("Pembagian")
+    distribution_window.geometry(main_window.geometry())
+
+    main_window.withdraw()
 
     def perform_distribution():
         num1 = int(entry_num1.get())
@@ -181,44 +180,48 @@ def open_distribution_window():
         label_result.config(text="Hasil: " + str(result))
         
     def back_to_main_window():
-        distribution_window.destroy()  # Menutup jendela penjumlahan
-        main_window.deiconify()  # Membuka kembali jendela utama
+        distribution_window.destroy()
+        main_window.deiconify()
 
-    label_num1 = tk.Label(distribution_window, text="Bilangan 1:")
+    label_num1 = ttk.Label(distribution_window, text="Bilangan 1:")
     label_num1.pack()
 
-    entry_num1 = tk.Entry(distribution_window)
+    entry_num1 = ttk.Entry(distribution_window)
     entry_num1.pack()
 
-    label_num2 = tk.Label(distribution_window, text="Bilangan 2:")
+    label_num2 = ttk.Label(distribution_window, text="Bilangan 2:")
     label_num2.pack()
 
-    entry_num2 = tk.Entry(distribution_window)
+    entry_num2 = ttk.Entry(distribution_window)
     entry_num2.pack()
 
-    button_add = tk.Button(distribution_window, text="Hitung", command=perform_distribution)
+    button_add = ttk.Button(distribution_window, text="Hitung", command=perform_distribution)
     button_add.pack()
     
-    label_track_1 = tk.Label(distribution_window, text="Track 1 :")
+    label_track_1 = ttk.Label(distribution_window, text="Track 1 :")
     label_track_1.pack()
     
-    label_track_2 = tk.Label(distribution_window, text="Track 2: ")
+    label_track_2 = ttk.Label(distribution_window, text="Track 2: ")
     label_track_2.pack()
     
-    label_track_3 = tk.Label(distribution_window, text="Track 3: ")
+    label_track_3 = ttk.Label(distribution_window, text="Track 3: ")
     label_track_3.pack()
 
-    label_result = tk.Label(distribution_window, text="Hasil: ")
+    label_result = ttk.Label(distribution_window, text="Hasil: ")
     label_result.pack()
     
-    button_back = tk.Button(distribution_window, text="Kembali", command=back_to_main_window)
-    button_back.pack()
-   
-def open_factorial_window():
-    main_window.withdraw()  # Menyembunyikan jendela utama
+    button_back = ttk.Button(distribution_window, text="Kembali", command=back_to_main_window)
+    button_back.pack()    
 
-    factorial_window = tk.Toplevel()
-    factorial_window.title("Faktorial")
+def open_factorial_window():
+    factorial_window = tk.Tk()
+    factorial_window.tk.call("source", "azure.tcl")
+    factorial_window.tk.call("set_theme", "dark")
+    factorial_window.title("Faktorial")    
+    factorial_window.geometry(main_window.geometry())
+
+    
+    main_window.withdraw()
 
     def perform_factorial():
         num1 = int(entry_num1.get())
@@ -229,38 +232,41 @@ def open_factorial_window():
         label_result.config(text="Hasil: " + str(result))
         
     def back_to_main_window():
-        factorial_window.destroy()  # Menutup jendela penjumlahan
-        main_window.deiconify()  # Membuka kembali jendela utama
+        factorial_window.destroy()
+        main_window.deiconify() 
 
-    label_num1 = tk.Label(factorial_window, text="Bilangan 1:")
+    label_num1 = ttk.Label(factorial_window, text="Masukkan bilangan yang ingin difaktorialkan:")
     label_num1.pack()
 
-    entry_num1 = tk.Entry(factorial_window)
+    entry_num1 = ttk.Entry(factorial_window)
     entry_num1.pack()
 
-    button_add = tk.Button(factorial_window, text="Hitung", command=perform_factorial)
+    button_add = ttk.Button(factorial_window, text="Hitung", command=perform_factorial)
     button_add.pack()
     
-    label_track_1 = tk.Label(factorial_window, text="Track 1 :")
+    label_track_1 = ttk.Label(factorial_window, text="Track 1 :")
     label_track_1.pack()
     
-    label_track_2 = tk.Label(factorial_window, text="Track 2: ")
+    label_track_2 = ttk.Label(factorial_window, text="Track 2: ")
     label_track_2.pack()
     
-    label_track_3 = tk.Label(factorial_window, text="Track 3: ")
+    label_track_3 = ttk.Label(factorial_window, text="Track 3: ")
     label_track_3.pack()
 
-    label_result = tk.Label(factorial_window, text="Hasil: ")
+    label_result = ttk.Label(factorial_window, text="Hasil: ")
     label_result.pack()
     
-    button_back = tk.Button(factorial_window, text="Kembali", command=back_to_main_window)
+    button_back = ttk.Button(factorial_window, text="Kembali", command=back_to_main_window)
     button_back.pack()
-    
-def open_power_window():
-    main_window.withdraw()  # Menyembunyikan jendela utama
 
-    power_window = tk.Toplevel()
-    power_window.title("Perpangkatan")
+def open_power_window():
+    power_window = tk.Tk()
+    power_window.tk.call("source", "azure.tcl")
+    power_window.tk.call("set_theme", "dark")
+    power_window.title("Perpangkatan")    
+    power_window.geometry(main_window.geometry())
+
+    main_window.withdraw()
 
     def perform_power():
         num1 = int(entry_num1.get())
@@ -272,44 +278,47 @@ def open_power_window():
         label_result.config(text="Hasil: " + str(result))
         
     def back_to_main_window():
-        power_window.destroy()  # Menutup jendela penjumlahan
-        main_window.deiconify()  # Membuka kembali jendela utama
+        power_window.destroy()
+        main_window.deiconify() 
 
-    label_num1 = tk.Label(power_window, text="Masukkan bilangan basis:")
+    label_num1 = ttk.Label(power_window, text="Masukkan bilangan basis:")
     label_num1.pack()
 
-    entry_num1 = tk.Entry(power_window)
+    entry_num1 = ttk.Entry(power_window)
     entry_num1.pack()
     
-    label_num2 = tk.Label(power_window, text="Masukkan bilangan pangkat:")
+    label_num2 = ttk.Label(power_window, text="Masukkan bilangan pangkat:")
     label_num2.pack()
     
-    entry_num2 = tk.Entry(power_window)
+    entry_num2 = ttk.Entry(power_window)
     entry_num2.pack()
 
-    button_add = tk.Button(power_window, text="Hitung", command=perform_power)
+    button_add = ttk.Button(power_window, text="Hitung", command=perform_power)
     button_add.pack()
     
-    label_track_1 = tk.Label(power_window, text="Track 1 :")
+    label_track_1 = ttk.Label(power_window, text="Track 1 :")
     label_track_1.pack()
     
-    label_track_2 = tk.Label(power_window, text="Track 2: ")
+    label_track_2 = ttk.Label(power_window, text="Track 2: ")
     label_track_2.pack()
     
-    label_track_3 = tk.Label(power_window, text="Track 3: ")
+    label_track_3 = ttk.Label(power_window, text="Track 3: ")
     label_track_3.pack()
 
-    label_result = tk.Label(power_window, text="Hasil: ")
+    label_result = ttk.Label(power_window, text="Hasil: ")
     label_result.pack()
     
-    button_back = tk.Button(power_window, text="Kembali", command=back_to_main_window)
+    button_back = ttk.Button(power_window, text="Kembali", command=back_to_main_window)
     button_back.pack()
 
 def open_root_window():
-    main_window.withdraw()  # Menyembunyikan jendela utama
-
-    root_window = tk.Toplevel()
+    root_window = tk.Tk()
+    root_window.tk.call("source", "azure.tcl")
+    root_window.tk.call("set_theme", "dark")
     root_window.title("Akar Kuadrat")
+    root_window.geometry(main_window.geometry())
+    
+    main_window.withdraw()
 
     def perform_root():
         num1 = int(entry_num1.get())
@@ -320,63 +329,113 @@ def open_root_window():
         label_result.config(text="Hasil: " + str(result))
         
     def back_to_main_window():
-        root_window.destroy()  # Menutup jendela penjumlahan
-        main_window.deiconify()  # Membuka kembali jendela utama
+        root_window.destroy()
+        main_window.deiconify() 
 
-    label_num1 = tk.Label(root_window, text="Masukkan bilangan yang ingin diakarkan:")
+    label_num1 = ttk.Label(root_window, text="Masukkan bilangan yang ingin diakarkan:")
     label_num1.pack()
 
-    entry_num1 = tk.Entry(root_window)
+    entry_num1 = ttk.Entry(root_window)
     entry_num1.pack()
 
-    button_add = tk.Button(root_window, text="Hitung", command=perform_root)
+    button_add = ttk.Button(root_window, text="Hitung", command=perform_root)
     button_add.pack()
     
-    label_track_1 = tk.Label(root_window, text="Track 1 :")
+    label_track_1 = ttk.Label(root_window, text="Track 1 :")
     label_track_1.pack()
     
-    label_track_2 = tk.Label(root_window, text="Track 2: ")
+    label_track_2 = ttk.Label(root_window, text="Track 2: ")
     label_track_2.pack()
     
-    label_track_3 = tk.Label(root_window, text="Track 3: ")
+    label_track_3 = ttk.Label(root_window, text="Track 3: ")
     label_track_3.pack()
 
-    label_result = tk.Label(root_window, text="Hasil: ")
+    label_result = ttk.Label(root_window, text="Hasil: ")
     label_result.pack()
     
-    button_back = tk.Button(root_window, text="Kembali", command=back_to_main_window)
+    button_back = ttk.Button(root_window, text="Kembali", command=back_to_main_window)
     button_back.pack()
     
+def open_logarithm_window():
+    logarithm_window = tk.Tk()
+    logarithm_window.tk.call("source", "azure.tcl")
+    logarithm_window.tk.call("set_theme", "dark")
+    logarithm_window.title("Logaritma Biner")    
+    logarithm_window.geometry(main_window.geometry())
+    
+    main_window.withdraw()
+
+    def perform_logarithm():
+        num1 = int(entry_num1.get())
+        Track_1, Track_2, Track_3, result = logarithm(num1)
+        label_track_1.config(text="Track 1: " + ''.join(str(x) for x in Track_1))
+        label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
+        label_track_3.config(text="Track 3: " + ''.join(str(x) for x in Track_3))
+        label_result.config(text="Hasil: " + str(result))
+        
+    def back_to_main_window():
+        logarithm_window.destroy()
+        main_window.deiconify() 
+
+    label_num1 = ttk.Label(logarithm_window, text="Masukkan bilangan pokok:")
+    label_num1.pack()
+
+    entry_num1 = ttk.Entry(logarithm_window)
+    entry_num1.pack()
+
+    button_add = ttk.Button(logarithm_window, text="Hitung", command=perform_logarithm)
+    button_add.pack()
+    
+    label_track_1 = ttk.Label(logarithm_window, text="Track 1 :")
+    label_track_1.pack()
+    
+    label_track_2 = ttk.Label(logarithm_window, text="Track 2: ")
+    label_track_2.pack()
+    
+    label_track_3 = ttk.Label(logarithm_window, text="Track 3: ")
+    label_track_3.pack()
+
+    label_result = ttk.Label(logarithm_window, text="Hasil: ")
+    label_result.pack()
+    
+    button_back = ttk.Button(logarithm_window, text="Kembali", command=back_to_main_window)
+    button_back.pack()
+
 def exit_program():
     main_window.destroy()
 
-main_window = tk.Tk()
-main_window.title("Program Kalkulator")
+main_window.tk.call("source", "azure.tcl")
+main_window.tk.call("set_theme", "dark")
 
-# set_window_fullscreen(main_window)
+"""
+main_window.geometry('700x400')  # Ukuran tetap (lebar x tinggi)
+main_window.resizable(False, False)  # Mengunci ukuran jendela
+"""
+button_addition = ttk.Button(main_window, text="Penjumlahan", command=open_addition_window, width=20)
+button_addition.grid(row=0, column=0, ipadx=80, ipady=5, padx=5, pady=5)
 
-button_addition = tk.Button(main_window, text="Penjumlahan", command=open_addition_window)
-button_addition.pack()
+button_subtraction = ttk.Button(main_window, text="Pengurangan", command=open_subtraction_window, width=20)
+button_subtraction.grid(row=0, column=1, ipadx=80, ipady=5, padx=5, pady=5)
 
-button_subtraction = tk.Button(main_window, text="Pengurangan", command=open_subtraction_window)
-button_subtraction.pack()
+button_multiplication = ttk.Button(main_window, text="Perkalian", command=open_multiplication_window, width=20)
+button_multiplication.grid(row=1, column=0, ipadx=80, ipady=5, padx=5, pady=5)
 
-button_multiplication = tk.Button(main_window, text="Perkalian", command=open_multiplication_window)
-button_multiplication.pack()
+button_distribution = ttk.Button(main_window, text="Pembagian", command=open_distribution_window, width=20)
+button_distribution.grid(row=1, column=1, ipadx=80, ipady=5, padx=5, pady=5)
 
-button_distribution = tk.Button(main_window, text="Pembagian", command=open_distribution_window)
-button_distribution.pack()
+button_factorial = ttk.Button(main_window, text="Faktorial", command=open_factorial_window, width=20)
+button_factorial.grid(row=2, column=0, ipadx=80, ipady=5, padx=5, pady=5)
 
-button_factorial = tk.Button(main_window, text="Faktorial", command=open_factorial_window)
-button_factorial.pack()
+button_power = ttk.Button(main_window, text="Perpangkatan", comman=open_power_window, width=20)
+button_power.grid(row=2, column=1, ipadx=80, ipady=5, padx=5, pady=5)
 
-button_power = tk.Button(main_window, text="Perpangkatan", command=open_power_window)
-button_power.pack()
+button_root = ttk.Button(main_window, text="Akar Kuadrat", command=open_root_window, width=20)
+button_root.grid(row=3, column=0, ipadx=80, ipady=5, padx=5, pady=5)
 
-button_root = tk.Button(main_window, text="Akar kuadart", command=open_root_window)
-button_root.pack()
+button_logarithm = ttk.Button(main_window, text="Logaritma Biner", command=open_logarithm_window, width=20)
+button_logarithm.grid(row=3, column=1, ipadx=80, ipady=5, padx=5, pady=5)
 
-button_exit = tk.Button(main_window, text="Exit", command=exit_program)
-button_exit.pack()
+button_exit = ttk.Button(main_window, text="Exit", width=20, command=exit_program)
+button_exit.grid(row=4, column=0, columnspan=2, ipadx=80, ipady=5, padx=5, pady=5)
 
 main_window.mainloop()

@@ -3,10 +3,10 @@ def addition(num1, num2):
     Track_1 = []
     Track_2 = []
 
-    # Meminta input 1
+    # Memasukkan input 1
     input_1 = num1
 
-    # Meminta input 2
+    # Memasukkan input 2
     input_2 = num2
 
     # Memasukkan input 1 ke Track 1
@@ -43,7 +43,7 @@ def addition(num1, num2):
     Track_2.append("B")
     Track_2.append("B")
 
-
+    # Menentukan posisi awal pada masing-masing Track
     j = abs(input_1) + abs(input_2) + 1
     k = abs(input_1) + abs(input_2) + 1
     # Initial State q0

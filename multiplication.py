@@ -1,13 +1,13 @@
 def multiplication(num1, num2):
-    # Mendeklarasikan 2 track kosong
+    # Mendeklarasikan 3 track kosong
     Track_1 = []
     Track_2 = []
     Track_3 = []
 
-    # Meminta user memasukkan input bilangan pertama
+    # Memasukkan input bilangan pertama
     input_1 = num1
 
-    # Meminta user memasukkan input bilangan kedua
+    # Memasukkan input bilangan kedua
     input_2 = num2
 
     # Memasukkan input 1 ke Track 1
@@ -54,12 +54,12 @@ def multiplication(num1, num2):
     Track_3.append("B")
     Track_3.append("B")
 
+    # Menentukan posisi awal pada masing-masing Track
     j = abs(input_1) * abs(input_2) + 1
     k = abs(input_1) * abs(input_2) + 1
     l = abs(input_1) * abs(input_2) + 1
     # Initial State q0
     q = 0
-
 
     while q not in [4]:
         # State q0
