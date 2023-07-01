@@ -86,7 +86,7 @@ def subtraction(Track_1, Track_1_arrow, Track_2, Track_2_arrow, q, j, k):
             Track_2_arrow[k] = "^"
 
             q = 9
-        elif Track_1[j] == "-" and Track_2[k] == "+":
+        elif Track_1[j] == "-" and Track_2[k] == "B":
             Track_2[k] = "+"
             
             Track_1_arrow[j] = " "
