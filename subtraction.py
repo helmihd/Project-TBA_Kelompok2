@@ -8,9 +8,9 @@ def subtraction(Track_1, Track_1_arrow, Track_2, Track_2_arrow, q, j, k):
             j += 1
             Track_1_arrow[j] = "^"
 
-            Track_1_arrow[k] = " "
+            Track_2_arrow[k] = " "
             k += 1
-            Track_1_arrow[k] = "^"
+            Track_2_arrow[k] = "^"
 
             q = 0
         elif Track_1[j] == "-":
@@ -20,9 +20,9 @@ def subtraction(Track_1, Track_1_arrow, Track_2, Track_2_arrow, q, j, k):
             j += 1
             Track_1_arrow[j] = "^"
 
-            Track_1_arrow[k] = " "
+            Track_2_arrow[k] = " "
             k += 1
-            Track_1_arrow[k] = "^"
+            Track_2_arrow[k] = "^"
 
             q = 0
         elif Track_1[j] == 1:
@@ -31,9 +31,9 @@ def subtraction(Track_1, Track_1_arrow, Track_2, Track_2_arrow, q, j, k):
             j += 1
             Track_1_arrow[j] = "^"
 
-            Track_1_arrow[k] = " "
+            Track_2_arrow[k] = " "
             k -= 1
-            Track_1_arrow[k] = "^"
+            Track_2_arrow[k] = "^"
                 
             q = 1
     # State q1
@@ -45,9 +45,9 @@ def subtraction(Track_1, Track_1_arrow, Track_2, Track_2_arrow, q, j, k):
             j += 1
             Track_1_arrow[j] = "^"
 
-            Track_1_arrow[k] = " "
+            Track_2_arrow[k] = " "
             k -= 1
-            Track_1_arrow[k] = "^"
+            Track_2_arrow[k] = "^"
 
             q = 2
         elif Track_1[j] == "+" and Track_2[k] == "B":
@@ -57,21 +57,21 @@ def subtraction(Track_1, Track_1_arrow, Track_2, Track_2_arrow, q, j, k):
             j += 1
             Track_1_arrow[j] = "^"
 
-            Track_1_arrow[k] = " "
+            Track_2_arrow[k] = " "
             k -= 1
-            Track_1_arrow[k] = "^"
+            Track_2_arrow[k] = "^"
 
             q = 2
         elif Track_1[j] == "-" and Track_2[k] == "+":
-            Track_1_arrow[k] = " "
+            Track_2_arrow[k] = " "
             k += 1
-            Track_1_arrow[k] = "^"
+            Track_2_arrow[k] = "^"
 
             q = 4
         elif Track_1[j] == "+" and Track_2[k] == "-":
-            Track_1_arrow[k] = " "
+            Track_2_arrow[k] = " "
             k += 1
-            Track_1_arrow[k] = "^"
+            Track_2_arrow[k] = "^"
 
             q = 7
         elif Track_1[j] == "-" and Track_2[k] == "-":
@@ -81,9 +81,9 @@ def subtraction(Track_1, Track_1_arrow, Track_2, Track_2_arrow, q, j, k):
             j += 1
             Track_1_arrow[j] = "^"
 
-            Track_1_arrow[k] = " "
+            Track_2_arrow[k] = " "
             k -= 1
-            Track_1_arrow[k] = "^"
+            Track_2_arrow[k] = "^"
 
             q = 9
         elif Track_1[j] == "-" and Track_2[k] == "+":
@@ -93,9 +93,9 @@ def subtraction(Track_1, Track_1_arrow, Track_2, Track_2_arrow, q, j, k):
             j += 1
             Track_1_arrow[j] = "^"
 
-            Track_1_arrow[k] = " "
+            Track_2_arrow[k] = " "
             k -= 1
-            Track_1_arrow[k] = "^"
+            Track_2_arrow[k] = "^"
 
             q = 9
         elif Track_1[j] == "B":
@@ -109,9 +109,9 @@ def subtraction(Track_1, Track_1_arrow, Track_2, Track_2_arrow, q, j, k):
             j += 1
             Track_1_arrow[j] = "^"
 
-            Track_1_arrow[k] = " "
+            Track_2_arrow[k] = " "
             k -= 1
-            Track_1_arrow[k] = "^"
+            Track_2_arrow[k] = "^"
 
         elif Track_1[j] == "+" and Track_2[k] == "B":
             Track_2[k] = "-"
@@ -120,9 +120,9 @@ def subtraction(Track_1, Track_1_arrow, Track_2, Track_2_arrow, q, j, k):
             j += 1
             Track_1_arrow[j] = "^"
 
-            Track_1_arrow[k] = " "
+            Track_2_arrow[k] = " "
             k -= 1
-            Track_1_arrow[k] = "^"
+            Track_2_arrow[k] = "^"
      
         elif Track_1[j] == "B" and Track_2[k] == "+":
             q = 3
@@ -137,9 +137,9 @@ def subtraction(Track_1, Track_1_arrow, Track_2, Track_2_arrow, q, j, k):
             j += 1
             Track_1_arrow[j] = "^"
 
-            Track_1_arrow[k] = " "
+            Track_2_arrow[k] = " "
             k += 1
-            Track_1_arrow[k] = "^"
+            Track_2_arrow[k] = "^"
 
         else:
             q = 5
@@ -152,9 +152,9 @@ def subtraction(Track_1, Track_1_arrow, Track_2, Track_2_arrow, q, j, k):
             j += 1
             Track_1_arrow[j] = "^"
 
-            Track_1_arrow[k] = " "
+            Track_2_arrow[k] = " "
             k += 1
-            Track_1_arrow[k] = "^"
+            Track_2_arrow[k] = "^"
 
         else:
             q = 8
@@ -167,9 +167,9 @@ def subtraction(Track_1, Track_1_arrow, Track_2, Track_2_arrow, q, j, k):
             j += 1
             Track_1_arrow[j] = "^"
 
-            Track_1_arrow[k] = " "
+            Track_2_arrow[k] = " "
             k -= 1
-            Track_1_arrow[k] = "^"
+            Track_2_arrow[k] = "^"
 
         if Track_1[j] == "-" and Track_2[k] == "B":
             Track_2[k] = "+"
@@ -178,9 +178,9 @@ def subtraction(Track_1, Track_1_arrow, Track_2, Track_2_arrow, q, j, k):
             j += 1
             Track_1_arrow[j] = "^"
 
-            Track_1_arrow[k] = " "
+            Track_2_arrow[k] = " "
             k -= 1
-            Track_1_arrow[k] = "^"
+            Track_2_arrow[k] = "^"
 
         elif Track_1[j] == "B":
             q = 10
