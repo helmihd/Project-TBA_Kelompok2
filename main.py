@@ -60,17 +60,53 @@ def open_addition_window():
 
         j = abs(num1) + abs(num2) + 1
         k = abs(num1) + abs(num2) + 1
+        
+        Track_1_arrow = [" "] * len(Track_1)
+        Track_1_arrow[j] = "^"
+
+        Track_2_arrow = [" "] * len(Track_2)
+        Track_2_arrow[k] = "^"
+        
         # Initial State q0
         q = 0        
         
+        def update_table():
+            # Hapus konten pada LabelFrame
+            for child in track_1_values_frame.winfo_children():
+                child.destroy()
+            for child in track_1_arrow_values_frame.winfo_children():
+                child.destroy()
+            for child in track_2_values_frame.winfo_children():
+                child.destroy()
+            for child in track_2_arrow_values_frame.winfo_children():
+                child.destroy()
+
+            # Perbarui LabelFrame dengan nilai Track 1 dan panah
+            for value in Track_1:
+                label = ttk.Label(track_1_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_1_arrow:
+                label = ttk.Label(track_1_arrow_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_2:
+                label = ttk.Label(track_2_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_2_arrow:
+                label = ttk.Label(track_2_arrow_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+
+            addition_window.update()
+        
         while q not in [3, 5, 7, 9, 10]:
-            label_track_1.config(text="Track 1: " + ''.join(str(x) for x in Track_1))
-            label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
-            Track_1, Track_2, q, j, k = addition(Track_1, Track_2, q, j, k)           
+            update_table()
+            Track_1, Track_1_arrow, Track_2, Track_2_arrow, q, j, k = addition(
+                Track_1, Track_1_arrow, Track_2, Track_2_arrow, q, j, k
+            )
 
             time.sleep(0.5)
-            addition_window.update()
     
+        update_table()
+
         a = Track_2.count("+")
         b = Track_2.count("-")
 
@@ -101,18 +137,28 @@ def open_addition_window():
 
     button_add = ttk.Button(addition_window, text="Hitung", command=perform_addition)
     button_add.pack()
-    
-    label_track_1 = ttk.Label(addition_window, text="Track 1 :")
-    label_track_1.pack()
-    
-    label_track_2 = ttk.Label(addition_window, text="Track 2: ")
-    label_track_2.pack()
+
+
+    track_1_values_frame = ttk.LabelFrame(addition_window, text="Track 1")
+    track_1_values_frame.pack()
+
+    track_1_arrow_values_frame = ttk.LabelFrame(addition_window)
+    track_1_arrow_values_frame.pack()
+
+
+    track_2_values_frame = ttk.LabelFrame(addition_window, text="Track 2")
+    track_2_values_frame.pack()
+
+    track_2_arrow_values_frame = ttk.LabelFrame(addition_window)
+    track_2_arrow_values_frame.pack()
 
     label_result = ttk.Label(addition_window, text="Hasil: ")
     label_result.pack()
-    
+
     button_back = ttk.Button(addition_window, text="Kembali", command=back_to_main_window)
     button_back.pack()
+
+    addition_window.mainloop()
 
 def open_subtraction_window():
     subtraction_window = tk.Tk()
