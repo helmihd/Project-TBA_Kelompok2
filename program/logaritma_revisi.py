@@ -125,8 +125,8 @@ while q not in [9]:
             q = 7
         elif Track_1[j] == "B" and Track_2[k] == "B" and Track_3[l] == "B":
             q = 9
-    # State q9
-    elif q == 9:
+    # State q7
+    elif q == 7:
         if Track_1[j] == "B" and Track_2[k] == "B" and Track_3[l] == 0:
             Track_3[l] = "B"
             l -= 1
@@ -134,7 +134,7 @@ while q not in [9]:
         elif Track_1[j] == "B" and Track_2[k] == "B" and Track_3[l] == "B":
             l += 1
             q = 8
-    # State q9
+    # State q8
     elif q == 8:
         if Track_1[j] == "B" and Track_2[k] == "B" and Track_3[l] == "B":
             Track_3[l] = "X"
