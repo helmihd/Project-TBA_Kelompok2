@@ -435,13 +435,13 @@ def open_multiplication_window():
         multiplication_window.destroy()
         main_window.deiconify()
 
-    label_num1 = ttk.Label(multiplication_window, text="Masukkan bilangan pembilang:")
+    label_num1 = ttk.Label(multiplication_window, text="Masukkan bilangan pertama:")
     label_num1.pack()
 
     entry_num1 = ttk.Entry(multiplication_window)
     entry_num1.pack()
 
-    label_num2 = ttk.Label(multiplication_window, text="Masukkan bilangan penyebut:")
+    label_num2 = ttk.Label(multiplication_window, text="Masukkan bilangan kedua:")
     label_num2.pack()
 
     entry_num2 = ttk.Entry(multiplication_window)
