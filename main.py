@@ -207,15 +207,52 @@ def open_subtraction_window():
 
         j = abs(num1) + abs(num2) + 1
         k = abs(num1) + abs(num2) + 1
+        
+        Track_1_arrow = [" "] * len(Track_1)
+        Track_1_arrow[j] = "^"
+
+        Track_2_arrow = [" "] * len(Track_2)
+        Track_2_arrow[k] = "^"
+        
         # Initial State q0
         q = 0
+        
+        def update_table():
+            # Hapus konten pada LabelFrame
+            for child in track_1_values_frame.winfo_children():
+                child.destroy()
+            for child in track_1_arrow_values_frame.winfo_children():
+                child.destroy()
+            for child in track_2_values_frame.winfo_children():
+                child.destroy()
+            for child in track_2_arrow_values_frame.winfo_children():
+                child.destroy()
+
+            # Perbarui LabelFrame dengan nilai Track 1 dan panah
+            for value in Track_1:
+                label = ttk.Label(track_1_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_1_arrow:
+                label = ttk.Label(track_1_arrow_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_2:
+                label = ttk.Label(track_2_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_2_arrow:
+                label = ttk.Label(track_2_arrow_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+
+            subtraction_window.update()
+            
         while q not in [3, 5, 6, 8, 10, 11]:
-            label_track_1.config(text="Track 1: " + ''.join(str(x) for x in Track_1))
-            label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
-            Track_1, Track_2, q, j, k = subtraction(Track_1, Track_2, q, j, k)           
+            update_table()
+            Track_1, Track_1_arrow, Track_2, Track_2_arrow, q, j, k = subtraction(
+                Track_1, Track_1_arrow, Track_2, Track_2_arrow, q, j, k
+            )
 
             time.sleep(0.5)
-            subtraction_window.update()
+            
+        update_table()
         
         a = Track_2.count("+")
         b = Track_2.count("-")
@@ -247,18 +284,27 @@ def open_subtraction_window():
 
     button_add = ttk.Button(subtraction_window, text="Hitung", command=perform_subtraction)
     button_add.pack()
-    
-    label_track_1 = ttk.Label(subtraction_window, text="Track 1 :")
-    label_track_1.pack()
-    
-    label_track_2 = ttk.Label(subtraction_window, text="Track 2: ")
-    label_track_2.pack()
+
+    track_1_values_frame = ttk.LabelFrame(subtraction_window, text="Track 1")
+    track_1_values_frame.pack()
+
+    track_1_arrow_values_frame = ttk.LabelFrame(subtraction_window)
+    track_1_arrow_values_frame.pack()
+
+
+    track_2_values_frame = ttk.LabelFrame(subtraction_window, text="Track 2")
+    track_2_values_frame.pack()
+
+    track_2_arrow_values_frame = ttk.LabelFrame(subtraction_window)
+    track_2_arrow_values_frame.pack()
 
     label_result = ttk.Label(subtraction_window, text="Hasil: ")
     label_result.pack()
-    
+
     button_back = ttk.Button(subtraction_window, text="Kembali", command=back_to_main_window)
     button_back.pack()
+
+    subtraction_window.mainloop()
 
 def open_multiplication_window():
     multiplication_window = tk.Tk()
@@ -313,17 +359,65 @@ def open_multiplication_window():
         j = abs(num1) * abs(num2) + 1
         k = abs(num1) * abs(num2) + 1
         l = abs(num1) * abs(num2) + 1
+        
+        Track_1_arrow = [" "] * len(Track_1)
+        Track_1_arrow[j] = "^"
+
+        Track_2_arrow = [" "] * len(Track_2)
+        Track_2_arrow[k] = "^"
+        
+        Track_3_arrow = [" "] * len(Track_3)
+        Track_3_arrow[l] = "^"
+        
         # Initial State q0
         q = 0
         
-        while q not in [4]:    
-            label_track_1.config(text="Track 1: " + ''.join(str(x) for x in Track_1))
-            label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
-            label_track_3.config(text="Track 3: " + ''.join(str(x) for x in Track_3))
-            Track_1, Track_2, Track_3, q, j, k, l = multiplication(Track_1, Track_2, Track_3, q, j, k, l) 
-            
-            time.sleep(0.5)
+        def update_table():
+            # Hapus konten pada LabelFrame
+            for child in track_1_values_frame.winfo_children():
+                child.destroy()
+            for child in track_1_arrow_values_frame.winfo_children():
+                child.destroy()
+            for child in track_2_values_frame.winfo_children():
+                child.destroy()
+            for child in track_2_arrow_values_frame.winfo_children():
+                child.destroy()
+            for child in track_3_values_frame.winfo_children():
+                child.destroy()
+            for child in track_3_arrow_values_frame.winfo_children():
+                child.destroy()
+
+            # Perbarui LabelFrame dengan nilai Track 1 dan panah
+            for value in Track_1:
+                label = ttk.Label(track_1_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_1_arrow:
+                label = ttk.Label(track_1_arrow_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_2:
+                label = ttk.Label(track_2_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_2_arrow:
+                label = ttk.Label(track_2_arrow_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_3:
+                label = ttk.Label(track_3_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_3_arrow:
+                label = ttk.Label(track_3_arrow_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+
             multiplication_window.update()
+            
+        while q not in [4]:
+            update_table()
+            Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l = multiplication(
+                Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l
+            )
+
+            time.sleep(0.5)
+            
+        update_table()
         
         a = Track_3.count("+")
         b = Track_3.count("-")
@@ -356,14 +450,23 @@ def open_multiplication_window():
     button_add = ttk.Button(multiplication_window, text="Hitung", command=perform_multiplication)
     button_add.pack()
     
-    label_track_1 = ttk.Label(multiplication_window, text="Track 1 :")
-    label_track_1.pack()
+    track_1_values_frame = ttk.LabelFrame(multiplication_window, text="Track 1")
+    track_1_values_frame.pack()
+
+    track_1_arrow_values_frame = ttk.LabelFrame(multiplication_window)
+    track_1_arrow_values_frame.pack()
     
-    label_track_2 = ttk.Label(multiplication_window, text="Track 2: ")
-    label_track_2.pack()
+    track_2_values_frame = ttk.LabelFrame(multiplication_window, text="Track 2")
+    track_2_values_frame.pack()
+
+    track_2_arrow_values_frame = ttk.LabelFrame(multiplication_window)
+    track_2_arrow_values_frame.pack()
     
-    label_track_3 = ttk.Label(multiplication_window, text="Track 3: ")
-    label_track_3.pack()
+    track_3_values_frame = ttk.LabelFrame(multiplication_window, text="Track 3")
+    track_3_values_frame.pack()
+
+    track_3_arrow_values_frame = ttk.LabelFrame(multiplication_window)
+    track_3_arrow_values_frame.pack()
 
     label_result = ttk.Label(multiplication_window, text="Hasil: ")
     label_result.pack()
@@ -422,17 +525,65 @@ def open_distribution_window():
         j = abs(num1) * abs(num2) + 1
         k = abs(num1) * abs(num2) + 1
         l = abs(num1) * abs(num2) + 1
+        
+        Track_1_arrow = [" "] * len(Track_1)
+        Track_1_arrow[j] = "^"
+
+        Track_2_arrow = [" "] * len(Track_2)
+        Track_2_arrow[k] = "^"
+        
+        Track_3_arrow = [" "] * len(Track_3)
+        Track_3_arrow[l] = "^"
+        
         # Initial State q0
         q = 0
         
-        while q not in [4, 7, 8]:
-            label_track_1.config(text="Track 1: " + ''.join(str(x) for x in Track_1))
-            label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
-            label_track_3.config(text="Track 3: " + ''.join(str(x) for x in Track_3))
-            Track_1, Track_2, Track_3, q, j, k, l = distribution(Track_1, Track_2, Track_3, q, j, k, l) 
-            
-            time.sleep(0.5)
+        def update_table():
+            # Hapus konten pada LabelFrame
+            for child in track_1_values_frame.winfo_children():
+                child.destroy()
+            for child in track_1_arrow_values_frame.winfo_children():
+                child.destroy()
+            for child in track_2_values_frame.winfo_children():
+                child.destroy()
+            for child in track_2_arrow_values_frame.winfo_children():
+                child.destroy()
+            for child in track_3_values_frame.winfo_children():
+                child.destroy()
+            for child in track_3_arrow_values_frame.winfo_children():
+                child.destroy()
+
+            # Perbarui LabelFrame dengan nilai Track 1 dan panah
+            for value in Track_1:
+                label = ttk.Label(track_1_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_1_arrow:
+                label = ttk.Label(track_1_arrow_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_2:
+                label = ttk.Label(track_2_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_2_arrow:
+                label = ttk.Label(track_2_arrow_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_3:
+                label = ttk.Label(track_3_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_3_arrow:
+                label = ttk.Label(track_3_arrow_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+
             distribution_window.update()
+            
+        while q not in [4, 7, 8]:
+            update_table()
+            Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l = distribution(
+                Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l
+            )
+
+            time.sleep(0.5)
+            
+        update_table()
         
         a = Track_3.count("+")
         b = Track_3.count("-")
@@ -465,14 +616,23 @@ def open_distribution_window():
     button_add = ttk.Button(distribution_window, text="Hitung", command=perform_distribution)
     button_add.pack()
     
-    label_track_1 = ttk.Label(distribution_window, text="Track 1 :")
-    label_track_1.pack()
+    track_1_values_frame = ttk.LabelFrame(distribution_window, text="Track 1")
+    track_1_values_frame.pack()
+
+    track_1_arrow_values_frame = ttk.LabelFrame(distribution_window)
+    track_1_arrow_values_frame.pack()
     
-    label_track_2 = ttk.Label(distribution_window, text="Track 2: ")
-    label_track_2.pack()
+    track_2_values_frame = ttk.LabelFrame(distribution_window, text="Track 2")
+    track_2_values_frame.pack()
+
+    track_2_arrow_values_frame = ttk.LabelFrame(distribution_window)
+    track_2_arrow_values_frame.pack()
     
-    label_track_3 = ttk.Label(distribution_window, text="Track 3: ")
-    label_track_3.pack()
+    track_3_values_frame = ttk.LabelFrame(distribution_window, text="Track 3")
+    track_3_values_frame.pack()
+
+    track_3_arrow_values_frame = ttk.LabelFrame(distribution_window)
+    track_3_arrow_values_frame.pack()
 
     label_result = ttk.Label(distribution_window, text="Hasil: ")
     label_result.pack()
@@ -523,17 +683,65 @@ def open_factorial_window():
         j = 1
         k = 1
         l = 1
+        
+        Track_1_arrow = [" "] * len(Track_1)
+        Track_1_arrow[j] = "^"
+
+        Track_2_arrow = [" "] * len(Track_2)
+        Track_2_arrow[k] = "^"
+        
+        Track_3_arrow = [" "] * len(Track_3)
+        Track_3_arrow[l] = "^"
+        
         # Initial State q0
         q = 0
         
-        while q not in [5, 6]:
-            label_track_1.config(text="Track 1: " + ''.join(str(x) for x in Track_1))
-            label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
-            label_track_3.config(text="Track 3: " + ''.join(str(x) for x in Track_3))
-            Track_1, Track_2, Track_3, q, j, k, l = factorial(Track_1, Track_2, Track_3, q, j, k, l) 
-            
-            time.sleep(0.5)
+        def update_table():
+            # Hapus konten pada LabelFrame
+            for child in track_1_values_frame.winfo_children():
+                child.destroy()
+            for child in track_1_arrow_values_frame.winfo_children():
+                child.destroy()
+            for child in track_2_values_frame.winfo_children():
+                child.destroy()
+            for child in track_2_arrow_values_frame.winfo_children():
+                child.destroy()
+            for child in track_3_values_frame.winfo_children():
+                child.destroy()
+            for child in track_3_arrow_values_frame.winfo_children():
+                child.destroy()
+
+            # Perbarui LabelFrame dengan nilai Track 1 dan panah
+            for value in Track_1:
+                label = ttk.Label(track_1_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_1_arrow:
+                label = ttk.Label(track_1_arrow_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_2:
+                label = ttk.Label(track_2_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_2_arrow:
+                label = ttk.Label(track_2_arrow_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_3:
+                label = ttk.Label(track_3_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_3_arrow:
+                label = ttk.Label(track_3_arrow_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+
             factorial_window.update()
+            
+        while q not in [5, 6]:
+            update_table()
+            Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l = factorial(
+                Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l
+            )
+
+            time.sleep(0.5)
+            
+        update_table()
         
         result = Track_3.count(0)
         
@@ -552,14 +760,23 @@ def open_factorial_window():
     button_add = ttk.Button(factorial_window, text="Hitung", command=perform_factorial)
     button_add.pack()
     
-    label_track_1 = ttk.Label(factorial_window, text="Track 1 :")
-    label_track_1.pack()
+    track_1_values_frame = ttk.LabelFrame(factorial_window, text="Track 1")
+    track_1_values_frame.pack()
+
+    track_1_arrow_values_frame = ttk.LabelFrame(factorial_window)
+    track_1_arrow_values_frame.pack()
     
-    label_track_2 = ttk.Label(factorial_window, text="Track 2: ")
-    label_track_2.pack()
+    track_2_values_frame = ttk.LabelFrame(factorial_window, text="Track 2")
+    track_2_values_frame.pack()
+
+    track_2_arrow_values_frame = ttk.LabelFrame(factorial_window)
+    track_2_arrow_values_frame.pack()
     
-    label_track_3 = ttk.Label(factorial_window, text="Track 3: ")
-    label_track_3.pack()
+    track_3_values_frame = ttk.LabelFrame(factorial_window, text="Track 3")
+    track_3_values_frame.pack()
+
+    track_3_arrow_values_frame = ttk.LabelFrame(factorial_window)
+    track_3_arrow_values_frame.pack()
 
     label_result = ttk.Label(factorial_window, text="Hasil: ")
     label_result.pack()
@@ -608,17 +825,65 @@ def open_power_window():
         j = 1
         k = 1
         l = 1
+        
+        Track_1_arrow = [" "] * len(Track_1)
+        Track_1_arrow[j] = "^"
+
+        Track_2_arrow = [" "] * len(Track_2)
+        Track_2_arrow[k] = "^"
+        
+        Track_3_arrow = [" "] * len(Track_3)
+        Track_3_arrow[l] = "^"
+        
         # Initial State q0
         q = 0
         
-        while q not in [9, 10, 12]:
-            label_track_1.config(text="Track 1: " + ''.join(str(x) for x in Track_1))
-            label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
-            label_track_3.config(text="Track 3: " + ''.join(str(x) for x in Track_3))
-            Track_1, Track_2, Track_3, q, j, k, l = power(Track_1, Track_2, Track_3, q, j, k, l) 
-            
-            time.sleep(0.5)
+        def update_table():
+            # Hapus konten pada LabelFrame
+            for child in track_1_values_frame.winfo_children():
+                child.destroy()
+            for child in track_1_arrow_values_frame.winfo_children():
+                child.destroy()
+            for child in track_2_values_frame.winfo_children():
+                child.destroy()
+            for child in track_2_arrow_values_frame.winfo_children():
+                child.destroy()
+            for child in track_3_values_frame.winfo_children():
+                child.destroy()
+            for child in track_3_arrow_values_frame.winfo_children():
+                child.destroy()
+
+            # Perbarui LabelFrame dengan nilai Track 1 dan panah
+            for value in Track_1:
+                label = ttk.Label(track_1_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_1_arrow:
+                label = ttk.Label(track_1_arrow_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_2:
+                label = ttk.Label(track_2_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_2_arrow:
+                label = ttk.Label(track_2_arrow_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_3:
+                label = ttk.Label(track_3_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_3_arrow:
+                label = ttk.Label(track_3_arrow_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+
             power_window.update()
+            
+        while q not in [9, 10, 12]:
+            update_table()
+            Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l = power(
+                Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l
+            )
+
+            time.sleep(0.5)
+            
+        update_table()
         
         result = Track_3.count(0)
         
@@ -643,14 +908,23 @@ def open_power_window():
     button_add = ttk.Button(power_window, text="Hitung", command=perform_power)
     button_add.pack()
     
-    label_track_1 = ttk.Label(power_window, text="Track 1 :")
-    label_track_1.pack()
+    track_1_values_frame = ttk.LabelFrame(power_window, text="Track 1")
+    track_1_values_frame.pack()
+
+    track_1_arrow_values_frame = ttk.LabelFrame(power_window)
+    track_1_arrow_values_frame.pack()
     
-    label_track_2 = ttk.Label(power_window, text="Track 2: ")
-    label_track_2.pack()
+    track_2_values_frame = ttk.LabelFrame(power_window, text="Track 2")
+    track_2_values_frame.pack()
+
+    track_2_arrow_values_frame = ttk.LabelFrame(power_window)
+    track_2_arrow_values_frame.pack()
     
-    label_track_3 = ttk.Label(power_window, text="Track 3: ")
-    label_track_3.pack()
+    track_3_values_frame = ttk.LabelFrame(power_window, text="Track 3")
+    track_3_values_frame.pack()
+
+    track_3_arrow_values_frame = ttk.LabelFrame(power_window)
+    track_3_arrow_values_frame.pack()
 
     label_result = ttk.Label(power_window, text="Hasil: ")
     label_result.pack()
@@ -695,17 +969,65 @@ def open_root_window():
         j = num1 + 1
         k = num1 + 1
         l = num1 + 1
+        
+        Track_1_arrow = [" "] * len(Track_1)
+        Track_1_arrow[j] = "^"
+
+        Track_2_arrow = [" "] * len(Track_2)
+        Track_2_arrow[k] = "^"
+        
+        Track_3_arrow = [" "] * len(Track_3)
+        Track_3_arrow[l] = "^"
+        
         # Initial State q0
         q = 0
         
-        while q not in [8]:
-            label_track_1.config(text="Track 1: " + ''.join(str(x) for x in Track_1))
-            label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
-            label_track_3.config(text="Track 3: " + ''.join(str(x) for x in Track_3))
-            Track_1, Track_2, Track_3, q, j, k, l = root(Track_1, Track_2, Track_3, q, j, k, l) 
-            
-            time.sleep(0.5)
+        def update_table():
+            # Hapus konten pada LabelFrame
+            for child in track_1_values_frame.winfo_children():
+                child.destroy()
+            for child in track_1_arrow_values_frame.winfo_children():
+                child.destroy()
+            for child in track_2_values_frame.winfo_children():
+                child.destroy()
+            for child in track_2_arrow_values_frame.winfo_children():
+                child.destroy()
+            for child in track_3_values_frame.winfo_children():
+                child.destroy()
+            for child in track_3_arrow_values_frame.winfo_children():
+                child.destroy()
+
+            # Perbarui LabelFrame dengan nilai Track 1 dan panah
+            for value in Track_1:
+                label = ttk.Label(track_1_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_1_arrow:
+                label = ttk.Label(track_1_arrow_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_2:
+                label = ttk.Label(track_2_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_2_arrow:
+                label = ttk.Label(track_2_arrow_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_3:
+                label = ttk.Label(track_3_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_3_arrow:
+                label = ttk.Label(track_3_arrow_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+
             root_window.update()
+            
+        while q not in [8]:
+            update_table()
+            Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l = root(
+                Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l
+            )
+
+            time.sleep(0.5)
+            
+        update_table()
         
         index = Track_1.index(1)
         result = Track_1[:index].count(0)
@@ -725,14 +1047,23 @@ def open_root_window():
     button_add = ttk.Button(root_window, text="Hitung", command=perform_root)
     button_add.pack()
     
-    label_track_1 = ttk.Label(root_window, text="Track 1 :")
-    label_track_1.pack()
+    track_1_values_frame = ttk.LabelFrame(root_window, text="Track 1")
+    track_1_values_frame.pack()
+
+    track_1_arrow_values_frame = ttk.LabelFrame(root_window)
+    track_1_arrow_values_frame.pack()
     
-    label_track_2 = ttk.Label(root_window, text="Track 2: ")
-    label_track_2.pack()
+    track_2_values_frame = ttk.LabelFrame(root_window, text="Track 2")
+    track_2_values_frame.pack()
+
+    track_2_arrow_values_frame = ttk.LabelFrame(root_window)
+    track_2_arrow_values_frame.pack()
     
-    label_track_3 = ttk.Label(root_window, text="Track 3: ")
-    label_track_3.pack()
+    track_3_values_frame = ttk.LabelFrame(root_window, text="Track 3")
+    track_3_values_frame.pack()
+
+    track_3_arrow_values_frame = ttk.LabelFrame(root_window)
+    track_3_arrow_values_frame.pack()
 
     label_result = ttk.Label(root_window, text="Hasil: ")
     label_result.pack()
@@ -776,17 +1107,64 @@ def open_logarithm_window():
         k = num1 + 1
         l = num1 + 1
 
+        Track_1_arrow = [" "] * len(Track_1)
+        Track_1_arrow[j] = "^"
+
+        Track_2_arrow = [" "] * len(Track_2)
+        Track_2_arrow[k] = "^"
+        
+        Track_3_arrow = [" "] * len(Track_3)
+        Track_3_arrow[l] = "^"
+        
         # Initial State q0
         q = 0
         
-        while q not in [9]:
-            label_track_1.config(text="Track 1: " + ''.join(str(x) for x in Track_1))
-            label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
-            label_track_3.config(text="Track 3: " + ''.join(str(x) for x in Track_3))
-            Track_1, Track_2, Track_3, q, j, k, l = logarithm(Track_1, Track_2, Track_3, q, j, k, l) 
-            
-            time.sleep(0.5)
+        def update_table():
+            # Hapus konten pada LabelFrame
+            for child in track_1_values_frame.winfo_children():
+                child.destroy()
+            for child in track_1_arrow_values_frame.winfo_children():
+                child.destroy()
+            for child in track_2_values_frame.winfo_children():
+                child.destroy()
+            for child in track_2_arrow_values_frame.winfo_children():
+                child.destroy()
+            for child in track_3_values_frame.winfo_children():
+                child.destroy()
+            for child in track_3_arrow_values_frame.winfo_children():
+                child.destroy()
+
+            # Perbarui LabelFrame dengan nilai Track 1 dan panah
+            for value in Track_1:
+                label = ttk.Label(track_1_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_1_arrow:
+                label = ttk.Label(track_1_arrow_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_2:
+                label = ttk.Label(track_2_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_2_arrow:
+                label = ttk.Label(track_2_arrow_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_3:
+                label = ttk.Label(track_3_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+            for value in Track_3_arrow:
+                label = ttk.Label(track_3_arrow_values_frame, text=value, width=1, anchor="center")
+                label.pack(side="left")
+
             logarithm_window.update()
+            
+        while q not in [9]:
+            update_table()
+            Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l = logarithm(
+                Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l
+            )
+
+            time.sleep(0.5)
+            
+        update_table()
         
         a = Track_3.count(0)
         if a > 0:
@@ -809,14 +1187,23 @@ def open_logarithm_window():
     button_add = ttk.Button(logarithm_window, text="Hitung", command=perform_logarithm)
     button_add.pack()
     
-    label_track_1 = ttk.Label(logarithm_window, text="Track 1 :")
-    label_track_1.pack()
+    track_1_values_frame = ttk.LabelFrame(logarithm_window, text="Track 1")
+    track_1_values_frame.pack()
+
+    track_1_arrow_values_frame = ttk.LabelFrame(logarithm_window)
+    track_1_arrow_values_frame.pack()
     
-    label_track_2 = ttk.Label(logarithm_window, text="Track 2: ")
-    label_track_2.pack()
+    track_2_values_frame = ttk.LabelFrame(logarithm_window, text="Track 2")
+    track_2_values_frame.pack()
+
+    track_2_arrow_values_frame = ttk.LabelFrame(logarithm_window)
+    track_2_arrow_values_frame.pack()
     
-    label_track_3 = ttk.Label(logarithm_window, text="Track 3: ")
-    label_track_3.pack()
+    track_3_values_frame = ttk.LabelFrame(logarithm_window, text="Track 3")
+    track_3_values_frame.pack()
+
+    track_3_arrow_values_frame = ttk.LabelFrame(logarithm_window)
+    track_3_arrow_values_frame.pack()
 
     label_result = ttk.Label(logarithm_window, text="Hasil: ")
     label_result.pack()

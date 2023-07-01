@@ -180,4 +180,4 @@ def root (Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow
         elif Track_1[j] == 1 and Track_2[k] == "B" and Track_3[l] == "B":
             q = 8
 
-    return Track_1, Track_2, Track_3, q, j, k, l
+    return Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l

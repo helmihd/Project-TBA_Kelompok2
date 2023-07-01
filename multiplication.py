@@ -160,4 +160,4 @@ def multiplication(Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Trac
 
             q = 0
 
-    return Track_1, Track_2, Track_3, q, j, k, l
+    return Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l

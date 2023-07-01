@@ -185,4 +185,4 @@ def subtraction(Track_1, Track_1_arrow, Track_2, Track_2_arrow, q, j, k):
         elif Track_1[j] == "B":
             q = 10
     
-    return Track_1, Track_2, q, j, k
+    return Track_1, Track_1_arrow, Track_2, Track_2_arrow, q, j, k
