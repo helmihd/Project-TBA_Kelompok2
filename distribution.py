@@ -1,4 +1,4 @@
-def distribution (Track_1, Track_2, Track_3, q, j, k, l):
+def distribution (Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l):
     # State q0
     if q == 0:
         if Track_1[j] == "+":
