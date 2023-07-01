@@ -55,13 +55,8 @@ def open_addition_window():
             Track_1.insert(0, "B")
             Track_1.append("B")
 
-        for i in range(abs(num1) + abs(num2)):
+        for i in range(len(Track_1)):
             Track_2.append("B")
-            Track_2.append("B")
-            Track_2.append("B")
-        Track_2.append("B")
-        Track_2.append("B")
-        Track_2.append("B")
 
         j = abs(num1) + abs(num2) + 1
         k = abs(num1) + abs(num2) + 1
@@ -73,9 +68,21 @@ def open_addition_window():
             label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
             Track_1, Track_2, q, j, k = addition(Track_1, Track_2, q, j, k)           
 
-            time.sleep(1)
+            time.sleep(0.5)
             addition_window.update()
     
+        a = Track_2.count("+")
+        b = Track_2.count("-")
+
+        if a > b:
+            result = a
+        elif a == b:
+            result = 0
+        else:
+            result = -b
+            
+        label_result.config(text="Hasil: " + str(result))
+        
     def back_to_main_window():
         addition_window.destroy()
         main_window.deiconify() 
@@ -119,9 +126,61 @@ def open_subtraction_window():
     def perform_subtraction():
         num1 = int(entry_num1.get())
         num2 = int(entry_num2.get())
-        Track_1, Track_2, result = subtraction(num1, num2)
-        label_track_1.config(text="Track 1: " + ''.join(str(x) for x in Track_1))
-        label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
+        # Mendeklarasikan 2 track kosong
+        Track_1 = []
+        Track_2 = []
+
+        # Memasukkan input 1 ke Track 1
+        for i in range(abs(num1)):
+            if num1 > 0:
+                Track_1.append("+")
+            elif num1 < 0:
+                Track_1.append("-")
+            else:
+                Track_1.append()
+
+        # Memberi pembatas
+        Track_1.append(1)
+
+        # Memasukkan input 2 ke Track 1
+        for i in range(abs(num2)):
+            if num2 > 0:
+                Track_1.append("+")
+            elif num2 < 0:
+                Track_1.append("-")
+            else:
+                Track_1.append()
+
+        # Menambahkan blank di awal dan akhir di kedua track
+        for i in range(abs(num1) + abs(num2) + 1):
+            Track_1.insert(0, "B")
+            Track_1.append("B")
+
+        for i in range(len(Track_1)):
+            Track_2.append("B")
+
+        j = abs(num1) + abs(num2) + 1
+        k = abs(num1) + abs(num2) + 1
+        # Initial State q0
+        q = 0
+        while q not in [3, 5, 6, 8, 10, 11]:
+            label_track_1.config(text="Track 1: " + ''.join(str(x) for x in Track_1))
+            label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
+            Track_1, Track_2, q, j, k = subtraction(Track_1, Track_2, q, j, k)           
+
+            time.sleep(0.5)
+            subtraction_window.update()
+        
+        a = Track_2.count("+")
+        b = Track_2.count("-")
+
+        if a > b:
+            result = a
+        elif a == b:
+            result = 0
+        else:
+            result = -b
+            
         label_result.config(text="Hasil: " + str(result))
         
     def back_to_main_window():
@@ -167,12 +226,71 @@ def open_multiplication_window():
     def perform_multiplication():
         num1 = int(entry_num1.get())
         num2 = int(entry_num2.get())
-        Track_1, Track_2, Track_3, result = multiplication(num1, num2)
-        label_track_1.config(text="Track 1: " + ''.join(str(x) for x in Track_1))
-        label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
-        label_track_3.config(text="Track 2: " + ''.join(str(x) for x in Track_3))
-        label_result.config(text="Hasil: " + str(result))
+        # Mendeklarasikan 3 track kosong
+        Track_1 = []
+        Track_2 = []
+        Track_3 = []
+
+        # Memasukkan input 1 ke Track 1
+        for i in range(abs(num1)):
+            if num1 > 0:
+                Track_1.append("+")
+            elif num1 < 0:
+                Track_1.append("-")
+            else:
+                Track_1.append()
+
+        # Memberi pembatas
+        Track_1.append(1)
+
+        # Memasukkan input 2 ke Track 1
+        for i in range(abs(num2)):
+            if num2 > 0:
+                Track_1.append("+")
+            elif num2 < 0:
+                Track_1.append("-")
+            else:
+                Track_1.append()
+        Track_1.append(1)
+
+
+        # Menambahkan blank di awal dan akhir di semua track
+        for i in range(abs(num1) * abs(num2) + 1):
+            Track_1.insert(0, "B")
+            Track_1.append("B")
+            
+        for i in range(len(Track_1)):
+            Track_2.append("B")
+            Track_3.append("B")
+
+        # Menentukan posisi awal pada masing-masing Track
+        j = abs(num1) * abs(num2) + 1
+        k = abs(num1) * abs(num2) + 1
+        l = abs(num1) * abs(num2) + 1
+        # Initial State q0
+        q = 0
         
+        while q not in [4]:    
+            label_track_1.config(text="Track 1: " + ''.join(str(x) for x in Track_1))
+            label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
+            label_track_3.config(text="Track 3: " + ''.join(str(x) for x in Track_3))
+            Track_1, Track_2, Track_3, q, j, k, l = multiplication(Track_1, Track_2, Track_3, q, j, k, l) 
+            
+            time.sleep(0.5)
+            multiplication_window.update()
+        
+        a = Track_3.count("+")
+        b = Track_3.count("-")
+        
+        if a > b:
+            result = a
+        elif a == b:
+            result = 0
+        else:
+            result = -b
+            
+        label_result.config(text="Hasil: " + str(result))
+
     def back_to_main_window():
         multiplication_window.destroy()
         main_window.deiconify()
@@ -219,10 +337,67 @@ def open_distribution_window():
     def perform_distribution():
         num1 = int(entry_num1.get())
         num2 = int(entry_num2.get())
-        Track_1, Track_2, Track_3, result = distribution(num1, num2)
-        label_track_1.config(text="Track 1: " + ''.join(str(x) for x in Track_1))
-        label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
-        label_track_3.config(text="Track 2: " + ''.join(str(x) for x in Track_3))
+        # Mendeklarasikan 3 track kosong
+        Track_1 = []
+        Track_2 = []
+        Track_3 = []
+
+        # Memasukkan input bilangan penyebut ke Track 1
+        for i in range(abs(num2)):
+            if num2 > 0:
+                Track_1.append("+")
+            elif num2 < 0:
+                Track_1.append("-")
+            else:
+                Track_1.append()
+
+        # Memberi pembatas
+        Track_1.append(1)
+
+        # Memasukkan input bilangan pembilang Track 1
+        for i in range(abs(num1)):
+            if num1 > 0:
+                Track_1.append("+")
+            elif num1 < 0:
+                Track_1.append("-")
+            else:
+                Track_1.append()
+
+        # Menambahkan blank di awal dan akhir di semua track
+        for i in range(abs(num1) * abs(num2) + 1):
+            Track_1.insert(0, "B")
+            Track_1.append("B")
+            
+        for i in range(len(Track_1)):
+            Track_2.append("B")
+            Track_3.append("B")
+        
+        # Menentukan posisi awal pada masing-masing Track
+        j = abs(num1) * abs(num2) + 1
+        k = abs(num1) * abs(num2) + 1
+        l = abs(num1) * abs(num2) + 1
+        # Initial State q0
+        q = 0
+        
+        while q not in [4, 7, 8]:
+            label_track_1.config(text="Track 1: " + ''.join(str(x) for x in Track_1))
+            label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
+            label_track_3.config(text="Track 3: " + ''.join(str(x) for x in Track_3))
+            Track_1, Track_2, Track_3, q, j, k, l = distribution(Track_1, Track_2, Track_3, q, j, k, l) 
+            
+            time.sleep(0.5)
+            distribution_window.update()
+        
+        a = Track_3.count("+")
+        b = Track_3.count("-")
+
+        if a > b:
+            result = a
+        elif a == b:
+            result = 0
+        else:
+            result = -b
+    
         label_result.config(text="Hasil: " + str(result))
         
     def back_to_main_window():
@@ -266,15 +441,56 @@ def open_factorial_window():
     factorial_window.title("Faktorial")    
     factorial_window.geometry(main_window.geometry())
 
-    
     main_window.withdraw()
 
     def perform_factorial():
         num1 = int(entry_num1.get())
-        Track_1, Track_2, Track_3, result = factorial(num1)
-        label_track_1.config(text="Track 1: " + ''.join(str(x) for x in Track_1))
-        label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
-        label_track_3.config(text="Track 3: " + ''.join(str(x) for x in Track_3))
+        # Mendeklarasikan 3 track kosong
+        Track_1 = []
+        Track_2 = []
+        Track_3 = []
+        
+        Track_1.append("B")
+        # Memasukkan input ke Track 1
+        for i in range(abs(num1)):
+            Track_1.append(0)
+            
+        # Memberi pembatas
+        Track_1.append(1)
+            
+        # Fungsi untuk menambah blank di belakang track
+        def count_factorial(n):
+            if n == 0 or n == 1:
+                return 1
+            else:
+                return n * count_factorial(n - 1)
+            
+        # Menambahkan blank di awal dan akhir di semua track sebanyak factorial dari input
+        for i in range(count_factorial(num1) + 1):
+            Track_1.append("B")
+            
+        for i in range(len(Track_1)):
+            Track_2.append("B")
+            Track_3.append("B")
+
+        # Menentukan posisi awal pada masing-masing Track
+        j = 1
+        k = 1
+        l = 1
+        # Initial State q0
+        q = 0
+        
+        while q not in [5, 6]:
+            label_track_1.config(text="Track 1: " + ''.join(str(x) for x in Track_1))
+            label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
+            label_track_3.config(text="Track 3: " + ''.join(str(x) for x in Track_3))
+            Track_1, Track_2, Track_3, q, j, k, l = factorial(Track_1, Track_2, Track_3, q, j, k, l) 
+            
+            time.sleep(0.5)
+            factorial_window.update()
+        
+        result = Track_3.count(0)
+        
         label_result.config(text="Hasil: " + str(result))
         
     def back_to_main_window():
@@ -317,10 +533,49 @@ def open_power_window():
     def perform_power():
         num1 = int(entry_num1.get())
         num2 = int(entry_num2.get())
-        Track_1, Track_2, Track_3, result = power(num1, num2)
-        label_track_1.config(text="Track 1: " + ''.join(str(x) for x in Track_1))
-        label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
-        label_track_3.config(text="Track 3: " + ''.join(str(x) for x in Track_3))
+        # Mendeklarasikan 3 track kosong
+        Track_1 = []
+        Track_2 = []
+        Track_3 = []
+
+        # Memasukkan input 1 ke Track 1
+        for i in range(abs(num1)):
+            Track_1.append(0)
+
+        # Memberi pembatas
+        Track_1.append(1)
+
+        # Memasukkan input 2 ke Track 1
+        for i in range(abs(num2)):
+            Track_1.append(0)
+
+        # Menambahkan blank di awal dan akhir di semua track
+        for i in range(abs(num1) ** abs(num2) + 1):
+            Track_1.append("B")
+        Track_1.insert(0, "B")
+
+        for i in range(len(Track_1)):
+            Track_2.append("B")
+            Track_3.append("B")
+
+        # Menentukan posisi awal pada masing-masing Track
+        j = 1
+        k = 1
+        l = 1
+        # Initial State q0
+        q = 0
+        
+        while q not in [9, 10, 12]:
+            label_track_1.config(text="Track 1: " + ''.join(str(x) for x in Track_1))
+            label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
+            label_track_3.config(text="Track 3: " + ''.join(str(x) for x in Track_3))
+            Track_1, Track_2, Track_3, q, j, k, l = power(Track_1, Track_2, Track_3, q, j, k, l) 
+            
+            time.sleep(0.5)
+            power_window.update()
+        
+        result = Track_3.count(0)
+        
         label_result.config(text="Hasil: " + str(result))
         
     def back_to_main_window():
@@ -368,10 +623,47 @@ def open_root_window():
 
     def perform_root():
         num1 = int(entry_num1.get())
-        Track_1, Track_2, Track_3, result = root(num1)
-        label_track_1.config(text="Track 1: " + ''.join(str(x) for x in Track_1))
-        label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
-        label_track_3.config(text="Track 3: " + ''.join(str(x) for x in Track_3))
+        # Mendeklarasikan 3 track kosong
+        Track_1 = []
+        Track_2 = []
+        Track_3 = []
+
+        # Memberi pembatas
+        Track_1.append(1)
+
+        # Memasukkan input ke Track 1
+        for i in range(abs(num1)):
+            Track_1.append(0)
+
+        # Menambahkan blank di awal dan akhir Track
+        for i in range(num1):
+            Track_1.insert(0, "B")
+        Track_1.insert(0, "B")
+        Track_1.append("B")
+
+        for i in range(len(Track_1)):
+            Track_2.append("B")
+            Track_3.append("B")
+
+        # Menentukan posisi awal pada masing-masing Track
+        j = num1 + 1
+        k = num1 + 1
+        l = num1 + 1
+        # Initial State q0
+        q = 0
+        
+        while q not in [8]:
+            label_track_1.config(text="Track 1: " + ''.join(str(x) for x in Track_1))
+            label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
+            label_track_3.config(text="Track 3: " + ''.join(str(x) for x in Track_3))
+            Track_1, Track_2, Track_3, q, j, k, l = root(Track_1, Track_2, Track_3, q, j, k, l) 
+            
+            time.sleep(0.5)
+            root_window.update()
+        
+        index = Track_1.index(1)
+        result = Track_1[:index].count(0)
+        
         label_result.config(text="Hasil: " + str(result))
         
     def back_to_main_window():
@@ -413,10 +705,49 @@ def open_logarithm_window():
 
     def perform_logarithm():
         num1 = int(entry_num1.get())
-        Track_1, Track_2, Track_3, result = logarithm(num1)
-        label_track_1.config(text="Track 1: " + ''.join(str(x) for x in Track_1))
-        label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
-        label_track_3.config(text="Track 3: " + ''.join(str(x) for x in Track_3))
+        # Mendeklarasikan 3 track kosong
+        Track_1 = []
+        Track_2 = []
+        Track_3 = []
+
+        # Memasukkan input 1 ke Track 1
+        for i in range(abs(num1)):
+            Track_1.append(0)
+
+        # Menambahkan blank di awal dan akhir di semua track
+        for i in range(num1 + 1):
+            Track_1.append("B")
+        for i in range(num1 + 1):
+            Track_1.insert(0, "B")
+        Track_1.append("B")
+
+        for i in range(len(Track_1)):
+            Track_2.append("B")
+            Track_3.append("B")
+            
+        # Menentukan posisi awal pada masing-masing Track
+        j = num1 + 1
+        k = num1 + 1
+        l = num1 + 1
+
+        # Initial State q0
+        q = 0
+        
+        while q not in [9]:
+            label_track_1.config(text="Track 1: " + ''.join(str(x) for x in Track_1))
+            label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
+            label_track_3.config(text="Track 3: " + ''.join(str(x) for x in Track_3))
+            Track_1, Track_2, Track_3, q, j, k, l = logarithm(Track_1, Track_2, Track_3, q, j, k, l) 
+            
+            time.sleep(0.5)
+            logarithm_window.update()
+        
+        a = Track_3.count(0)
+        if a > 0:
+            result = a
+        else:
+            result = "Hasil tidak valid"
+        
         label_result.config(text="Hasil: " + str(result))
         
     def back_to_main_window():
@@ -453,10 +784,6 @@ def exit_program():
 main_window.tk.call("source", "azure.tcl")
 main_window.tk.call("set_theme", "dark")
 
-"""
-main_window.geometry('700x400')  # Ukuran tetap (lebar x tinggi)
-main_window.resizable(False, False)  # Mengunci ukuran jendela
-"""
 button_addition = ttk.Button(main_window, text="Penjumlahan", command=open_addition_window, width=20)
 button_addition.grid(row=0, column=0, ipadx=80, ipady=5, padx=5, pady=5)
 
