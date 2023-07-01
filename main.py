@@ -1,5 +1,6 @@
 import tkinter as tk
 import time
+import math
 from tkinter import Tk, ttk, Button
 
 from addition import addition
@@ -732,7 +733,7 @@ def open_factorial_window():
                 label.pack(side="left")
 
             factorial_window.update()
-            
+
         while q not in [5, 6]:
             update_table()
             Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l = factorial(
@@ -874,18 +875,20 @@ def open_power_window():
                 label.pack(side="left")
 
             power_window.update()
-            
-        while q not in [9, 10, 12]:
-            update_table()
-            Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l = power(
-                Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l
-            )
-
-            time.sleep(0.5)
+         
+        if num1 < 0 or num2 < 0:
+            result = "Input tidak valid, kedua bilangan harus positif"
+        else:
+            while q not in [9, 10, 12]:
+                update_table()
+                Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l = power(
+                    Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l
+                )   
+        
+                time.sleep(0.5)
+            result = Track_3.count(0)
             
         update_table()
-        
-        result = Track_3.count(0)
         
         label_result.config(text="Hasil: " + str(result))
         
@@ -948,6 +951,10 @@ def open_root_window():
         Track_2 = []
         Track_3 = []
 
+        a = math.sqrt(num1)
+        a = math.ceil(a)
+        for i in range(pow(a, 2)):
+            Track_1.insert(0, "B")
         # Memberi pembatas
         Track_1.append(1)
 
@@ -955,9 +962,6 @@ def open_root_window():
         for i in range(abs(num1)):
             Track_1.append(0)
 
-        # Menambahkan blank di awal dan akhir Track
-        for i in range(num1):
-            Track_1.insert(0, "B")
         Track_1.insert(0, "B")
         Track_1.append("B")
 
@@ -966,9 +970,9 @@ def open_root_window():
             Track_3.append("B")
 
         # Menentukan posisi awal pada masing-masing Track
-        j = num1 + 1
-        k = num1 + 1
-        l = num1 + 1
+        j = pow(a,2) + 1
+        k = pow(a,2) + 1
+        l = pow(a,2) + 1
         
         Track_1_arrow = [" "] * len(Track_1)
         Track_1_arrow[j] = "^"
@@ -1018,19 +1022,22 @@ def open_root_window():
                 label.pack(side="left")
 
             root_window.update()
-            
-        while q not in [8]:
-            update_table()
-            Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l = root(
-                Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l
-            )
+        
+        if num1 < 0:
+            result = "Input tidak valid! Bilangan harus positif!"
+        else:
+            while q not in [8]:
+                update_table()
+                Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l = root(
+                    Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l
+                )
+                
+                time.sleep(0)
 
-            time.sleep(0.5)
+            index = Track_1.index(1)
+            result = Track_1[:index].count(0)
             
         update_table()
-        
-        index = Track_1.index(1)
-        result = Track_1[:index].count(0)
         
         label_result.config(text="Hasil: " + str(result))
         
@@ -1155,22 +1162,25 @@ def open_logarithm_window():
                 label.pack(side="left")
 
             logarithm_window.update()
-            
-        while q not in [9]:
-            update_table()
-            Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l = logarithm(
-                Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l
-            )
-
-            time.sleep(0.5)
-            
-        update_table()
         
-        a = Track_3.count(0)
-        if a > 0:
-            result = a
+        if num1 < 0:
+            result = "Input tidak valid! Bilangan harus positif!"
         else:
-            result = "Hasil tidak valid"
+            while q not in [9]:
+                update_table()
+                Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l = logarithm(
+                    Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l
+                )
+
+                time.sleep(0.5)
+                
+            update_table()
+            
+            a = Track_3.count(0)
+            if a > 0:
+                result = a
+            else:
+                result = "Hasil tidak valid"
         
         label_result.config(text="Hasil: " + str(result))
         
