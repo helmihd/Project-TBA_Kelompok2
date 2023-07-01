@@ -601,13 +601,13 @@ def open_distribution_window():
         distribution_window.destroy()
         main_window.deiconify()
 
-    label_num1 = ttk.Label(distribution_window, text="Bilangan 1:")
+    label_num1 = ttk.Label(distribution_window, text="Masukkan pembilang:")
     label_num1.pack()
 
     entry_num1 = ttk.Entry(distribution_window)
     entry_num1.pack()
 
-    label_num2 = ttk.Label(distribution_window, text="Bilangan 2:")
+    label_num2 = ttk.Label(distribution_window, text="Masukkan bilangan penyebut:")
     label_num2.pack()
 
     entry_num2 = ttk.Entry(distribution_window)
