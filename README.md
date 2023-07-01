@@ -1,6 +1,18 @@
 # Project-TBA_Kelompok2
 
-Template dari https://github.com/rdbende/Azure-ttk-theme
+Program turing machine untuk operasi:
+   * Penjumlahan --> bilangan bulat positif dan negatif
+   * Pengurangan --> bilangan bulat positif dan negatif
+   * Perkalian --> bilangan bulat positif dan negatif
+   * Pembagian --> bilangan bulat positif dan negatif, dengan pembulatan ke bawah
+   * Faktorial (!) --> bilangan bulat positif
+   * Pangkat (x^y)--> bilangan bulat positif
+   * Akar kuadrat --> bilangan bulat positif, dengan pembulatan kebawah
+   * Logaritma biner --> input dan output merupakan bilangan bulat positif
+
+# Template GUI
+
+Template GUI dari https://github.com/rdbende/Azure-ttk-theme
 
 # Cara penggunaan program
 
