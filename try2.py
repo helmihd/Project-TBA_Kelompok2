@@ -87,7 +87,7 @@ def open_addition_window():
             label_track_2_arrow.config(text="Track 2: " + ''.join(str(x) for x in Track_2_arrow))
             Track_1, Track_1_arrow, Track_2, Track_2_arrow, q, j, k = addition(Track_1, Track_1_arrow, Track_2, Track_2_arrow, q, j, k)           
 
-            time.sleep(2)
+            time.sleep(0.2)
             addition_window.update()
             
     

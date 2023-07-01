@@ -1,4 +1,5 @@
 import tkinter as tk
+import time
 from tkinter import Tk, ttk, Button
 
 from addition import addition
@@ -25,10 +26,55 @@ def open_addition_window():
     def perform_addition():
         num1 = int(entry_num1.get())
         num2 = int(entry_num2.get())
-        Track_1, Track_2, result = addition(num1, num2)
-        label_track_1.config(text="Track 1: " + ''.join(str(x) for x in Track_1))
-        label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
-        label_result.config(text="Hasil: " + str(result))
+        Track_1 = []
+        Track_2 = []
+
+        # Memasukkan input 1 ke Track 1
+        for i in range(abs(num1)):
+            if num1 > 0:
+                Track_1.append("+")
+            elif num1 < 0:
+                Track_1.append("-")
+            else:
+                Track_1.append()
+
+        # Memberi pembatas
+        Track_1.append(1)
+
+        # Memasukkan input 2 ke Track 1
+        for i in range(abs(num2)):
+            if num2 > 0:
+                Track_1.append("+")
+            elif num2 < 0:
+                Track_1.append("-")
+            else:
+                Track_1.append()
+
+        # Menambahkan blank di awal dan akhir di kedua track
+        for i in range(abs(num1) + abs(num2) + 1):
+            Track_1.insert(0, "B")
+            Track_1.append("B")
+
+        for i in range(abs(num1) + abs(num2)):
+            Track_2.append("B")
+            Track_2.append("B")
+            Track_2.append("B")
+        Track_2.append("B")
+        Track_2.append("B")
+        Track_2.append("B")
+
+        j = abs(num1) + abs(num2) + 1
+        k = abs(num1) + abs(num2) + 1
+        # Initial State q0
+        q = 0        
+        
+        while q not in [3, 5, 7, 9, 10]:
+            label_track_1.config(text="Track 1: " + ''.join(str(x) for x in Track_1))
+            label_track_2.config(text="Track 2: " + ''.join(str(x) for x in Track_2))
+            Track_1, Track_2, q, j, k = addition(Track_1, Track_2, q, j, k)           
+
+            time.sleep(1)
+            addition_window.update()
     
     def back_to_main_window():
         addition_window.destroy()
