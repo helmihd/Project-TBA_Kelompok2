@@ -1032,7 +1032,7 @@ def open_root_window():
                     Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arrow, q, j, k, l
                 )
                 
-                time.sleep(0)
+                time.sleep(0.5)
 
             index = Track_1.index(1)
             result = Track_1[:index].count(0)
