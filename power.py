@@ -75,6 +75,15 @@ def power (Track_1, Track_1_arrow, Track_2, Track_2_arrow, Track_3, Track_3_arro
             q = 3
         elif Track_1[j] == "B" and Track_2[k] == 0 and Track_3[l] == 0:
             q = 10
+        elif Track_1[j] == "B" and Track_2[k] == 0 and Track_3[l] == "B":
+            Track_3[l] = 0
+            Track_2_arrow[k] = " "
+            k-=1
+            Track_2_arrow[k] = "^"
+            Track_3_arrow[l] = " "
+            l+=1
+            Track_3_arrow[l] = "^"
+            q = 8
     # State q3
     elif q == 3:
         if Track_1[j] == "X" and Track_2[k] == 0 and Track_3[l] == "B":
